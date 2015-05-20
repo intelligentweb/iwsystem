@@ -247,6 +247,7 @@ for(var i=0;i<deleteKey.length;i++){
 
 		if(deleteKey[i]==totalkey[j]){
 			totalkey.splice(j,1);
+			totalnumberofkey.splice(j,1);
 			break;
 		}
 
@@ -286,7 +287,10 @@ var html =
 '<tr>'+
 '<th>  </th>'
 for(var i=0;i<keynumber;i++){
+if(totalkey[i]!=null){
  html+='<th>'+totalkey[i]+'</th>'
+}
+
 }
  
 '</tr>'
@@ -329,7 +333,9 @@ html+=
 '<tr>'+
 '<th>'+"total"+'</th>'
 for(var i=0;i<keynumber;i++){
+if(totalnumberofkey[i]){
  html+='<th>'+totalnumberofkey[i]+'</th>'
+}
 }
  
 '</tr>'
