@@ -101,11 +101,14 @@ var reg = / /;
 var res = tweet.text.split(reg);   
 console.log(res);
 console.log("************************************");
+for (var index=0;index<res.length;index++) {
+	res[index] = res[index].toLowerCase();
+}
 
 for (var index=0;index<res.length;index++) {
 	console.log(res[index]);
 
-if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="RT"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
+if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
 console.log("enter");
 if(personalkey[num].length == 0){
 
@@ -146,7 +149,7 @@ if(personalkey[num].length == 0){
 
 for (var index=0;index<res.length;index++) {
 
-if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="RT"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
+if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
 
 if(totalkey.length == 0){
 
