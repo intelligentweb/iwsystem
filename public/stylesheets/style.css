@@ -1,0 +1,20 @@
+/*********************************
+Design by Jason.leung,
+QQ,147430218
+新浪微博,@切片麵包
+Email, jason.leung58@icloud.com
+*********************************/
+/* 酷站代码整理 转载请注明出处 http://www.5icool.org */
+* {margin:0px; padding:0px; list-style: none;}
+#box {width:310px; height:170px; background:#fff; margin:0px auto; position: relative; overflow: hidden;z-index:5000;}
+#list {
+	position: absolute;
+	left: -2px;
+	top: 0px;
+}
+#list li {width:310px; height:170px; cursor: pointer;}
+#num {position: absolute; right:10px; bottom:10px;}
+#num li {width:16px; height:16px; float:left; margin-right:2px; color:#fff; cursor: pointer; font-size: 12px; font-family:'Arial'; line-height:16px; text-align: center; border:1px solid #fff;}
+.active {background:#ff6600;}
+span {display: block; width:auto; text-align:center; color:red; font-size: 14px; font-family:'Arial';}
+#foot_bm a,p,p a{font-size:12px;color:#666;}

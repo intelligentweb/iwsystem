@@ -1,0 +1,217 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" href="css/index.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<script src="./js/myjs.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+</head>
+
+<body> 
+  <form action="http://localhost:3000/" method="POST">
+<!-- head start--> 
+<div class='head'>
+			<div id='head_logo'>
+			 <img src='./image/logo.jpg'> 
+			</div>
+            <div id='head_title'>Query Social Network System</div>
+</div>
+		
+<!-- head end --> 
+<!-- body start --> 
+    <div class="wrapper">
+    <!-- wrapper_left -->
+      <div id="wrapper_left">
+      <!-- one -->
+        <div id="one">
+        <div id="one_left">
+
+        	<div id="search_field">Searching on specific topics</div>
+        	<div id="search">
+            	<div id="search_left">specific topics:</div>
+                <div id="search_right">
+                <input id='search_text' name="keywords" type="text" value="" 
+                style="color#d3d7d4;" onfocus="if(value=='e.g. hashtags or keywords'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='e.g. hashtags or keywords'}"/>
+                </div>
+                <div id="search_left">Location:</div>
+                <div id="search_right">
+                <input id='search_text' name="LatitudeandLongitude" type="text" value=""
+                style="color#d3d7d4;" onfocus="if(value=='e.g. 37.78157,-122.398720,1mi'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='e.g. 37.78157,-122.398720,1mi'}"/>
+                </div>
+            </div>
+            
+        </div>
+        <div id="one_right">
+        <input class='search_submit' name = "first" type="submit" value='select'    style="width:90px;height:45px;" /></a>
+        </div>
+        </div>
+         <!-- two  -->
+         <div class="nav"></div>
+        <div id="one">
+         <div id="one_left">
+       
+        	<div id="search_field">Searching Specific user in Z days,Y keywords</div>
+        	<div id="search">
+            	<div id="search_left">Screen_names :</div>
+                <div id="search_right">
+                <input id='search_text' name="Screen_name"type="text" value="" 
+                style="color#d3d7d4;" onfocus="if(value=='e.g. ids/screen_names of up to 10 users'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='e.g. ids/screen_names of up to 10 users'}"/>
+                </div>
+                <div id="search_left">How many keywords:</div>
+                <div id="search_right">
+                <div id='select_box'>
+                <select id='select'>
+                	<option value ="volvo">0</option>
+  					<option value ="volvo">1</option>
+ 				 	<option value ="saab">2</option>
+  					<option value="opel">3</option>
+  					<option value="audi">4</option>
+				</select>
+                </div>
+                </div>
+                <div id="search_left">How many days:</div>
+                <div id="search_right">
+                <div id='select_box'>
+                <select id='select'>
+  					<option value ="volvo">1</option>
+ 				 	<option value ="saab">2</option>
+  					<option value="opel">3</option>
+  					<option value="audi">4</option>
+				</select>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="one_right">
+        <input class='search_submit' name = "second" type="submit" value='select' onclick="window.location='result.html';" style="width:90px;height:45px;" />
+        </div>
+        </div>
+        <!-- three -->
+        <div class="nav"></div>
+        <div id="one">
+        
+        
+         <div id="one_left">
+       
+        	<div id="search_field">Searching venues a specific user visited last X days</div>
+        	<div id="search">
+            	<div id="search_left">User:</div>
+                <div id="search_right">
+                <input id='search_text' name="User" type="text" value="input a user name e.g. fabcira" 
+                style="color#d3d7d4;" onfocus="if(value=='input a user name e.g. fabcira'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input a user name e.g. fabcira'}"/>
+                </div>
+                <div id="search_left">Number of days:</div>
+                <div id="search_right">
+                <div id='select_box'>
+                <select id='select'>
+                	<option value ="volvo">0</option>
+  					<option value ="volvo">1</option>
+ 				 	<option value ="saab">2</option>
+  					<option value="opel">3</option>
+  					<option value="audi">4</option>
+				</select>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="one_right">
+        <input class='search_submit' name = "third" type="submit" value='select' onclick="window.location='result.html';" style="width:90px;height:45px;" />
+        </div>
+        </div>
+        
+        <!-- four -->
+        <div class="nav"></div>
+        <div id="one">
+        	<div id="one_left">
+       
+        	<div id="search_field">Searching vanues specific user visit last X days</div>
+        	<div id="search">
+            	<div id="search_left">Location:</div>
+                <div id="search_right">
+                <input id='search_text' name="venueid" type="text" value="" 
+                style="color#d3d7d4;" onfocus="if(value=='e.g. Sheffield (or St Peter & St Paul School'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='e.g. Sheffield (or St Peter & St Paul School'}"/>
+                </div>
+                <div id="search_left">How many days:</div>
+                <div id="search_right">
+                <div id='select_box'>
+                <select id='select'>
+                	<option value ="volvo">0</option>
+  					<option value ="volvo">1</option>
+ 				 	<option value ="saab">2</option>
+  					<option value="opel">3</option>
+  					<option value="audi">4</option>
+				</select>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id="one_right">
+        <input class='search_submit' name = "fourth" type="submit" value='select' onclick="window.location='result.html';" style="width:90px;height:45px;" />
+        </div>
+        </div>
+      </div>
+      <!-- wrapper_right -->
+      <div id="wrapper_right">
+      	<div id='wrapper_right_top'>
+       
+        	<div id="box">
+						<ul id="list">
+							<li><a href="https://foursquare.com"><img src="./image/four.jpg" /></a></li>
+							<li><a href="https://twitter.com/?lang=en-gb"><img src="./image/twitter.jpg"/></a></li>
+							<li><a href="https://en-gb.facebook.com"><img src="./image/facebook.jpg"/></a></li>
+						</ul>
+						<ul id="num">
+						  <li class="active">1</li>
+							<li>2</li>
+							<li>3</li>		
+						</ul>
+			</div>	
+        </div>
+        
+        <div id="wrapper_right_bottom">
+        
+       	  <div id="instruc_title"> Search instruction :</div>
+          
+            <div id="instruction_show"> 
+              <ol>
+                <li>Tracking public discussions on specific topics (e.g. via hashtags or keywords): input keywords and/or hashtags. Output a list of messages containing the required keyword/hashtags.</li>
+              </ol>
+              <p align="left"> </p>
+              <ol>
+                <li>What specific users discuss about: the ids/screen_names of up to 10 users are provided in input and the most frequent Y keywords used in the last Z days will be displayed (with associated total count, as well as count for each users). Input: user ids, Y, Z – with Z &gt;1</li>
+              </ol>
+              <p align="left">&nbsp;</p>
+              <ol>
+                <li>What points of interest (venues) a specific user has visited in the last X days (input: user id, plus X – value of X may be zero:</li>
+              </ol>
+              <p align="left"> </p>
+              <ol>
+                <li>Who is visiting venues in a specific geographic area (or visiting a named venue) or have done so in the last X days (input: name of location or coordinates, plus X – value of X may be zero:).</li>
+              </ol>
+            </div>
+        </div>
+      </div>
+	</div>
+<!-- body end -->
+<!-- foot start -->
+	<div id='bottom'>
+				<div class="bottom_content">
+					<ul>
+						<li><a href='us.html'>About us</a></li>
+						<li class='xian'>|</li>
+						<li>Copyright&nbsp;&copy;:2015</li>
+						<li class='xian'>|</li>
+						<li><a href='https://www.sheffield.ac.uk'>The university of Sheffield</a></li>
+						<li class='xian'>|</li>
+						<li>E-mail:lcheng3@sheffield.ac.uk</li>
+					</ul>
+					</div>
+			</div>
+
+<!-- foot end -->
+</form>
+</body>
+</html>

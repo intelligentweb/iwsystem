@@ -1,0 +1,187 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	/*color:red;*/
+}
+/* head */
+.head{
+		width:975px;
+		margin:0 auto;
+		border:1px solid #CCCCCC;
+		height:90px;
+		background:#F7F7F7;
+		
+	}
+	#head_logo{
+		width:150px;
+		height:90px;
+		float:left;
+	}
+	#head_title{
+		width:700px;
+		height:90px;
+		font-weight:900;
+		float:left;
+		font-size:40px;
+		color:#009999;
+		line-height:90px;
+		
+	}
+/* body */
+.nav{
+	width:650px;
+	height:5px;
+	}
+.wrapper{
+	margin:5 auto;
+	width:975px;
+	height:700px;
+}
+#wrapper_left{
+	float:left;
+	width:650px;
+	height:700px;
+}
+
+	
+#one {
+	width: 650px;
+	height: 170px;
+	background-color: #009999;
+	border-radius: 10px;
+}
+
+#one:hover{font-size:23; background:#336666; color:#990099}
+
+#one_left{
+	width: 500px;
+	height: 170px;
+	border-top: 0px;
+    border-left: 0px;
+    border-right: 1px solid grey;
+	border-bottom:0px;
+
+	}
+#search_field{
+	width: 500px;
+	height: 40px;
+	font-size:20px;
+	color:white;
+	line-height:40px;
+	border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+	border-bottom:1px solid white;
+	}
+#search{
+	width: 500px;
+	height: 130px;
+	
+	}
+#search_left{
+	width: 200px;
+	height: 40px;
+	text-align:right;
+	font-size:18px;
+	color:white;
+	line-height:40px;
+	float:left;
+	}
+#search_right{
+	width: 290px;
+	height: 40px;
+	margin-left:10px;
+	float:left;
+	}
+#search_text{
+	width: 285px;
+	height: 30px;
+	margin-top:5px;
+	}
+	
+#one_right{
+	width: 130px;
+	height: 50px;
+	
+	float:right;
+	
+	margin-top:-100px;
+	}
+#select_box{
+	width: 70px;
+	height: 25px;
+	margin-top:10px;
+	margin-left:10px;
+	}
+#select{
+	width: 60px;
+	height: 25px;
+	}
+#wrapper_right{
+	float:right;
+	width:310px;
+	height:700px;
+	}
+#wrapper_right_top{
+	width:310px;
+	height:170px;
+	
+	}
+		
+#wrapper_right_bottom{
+	margin-top:3px;
+	width:310px;
+	height:520px;
+	background-color:#66CCCC;
+	border-radius:15px;
+	}
+#instruc_title{
+	width:250px;
+	height:100px;
+	font-size:25px;
+	line-height:100px;
+	color:black;
+	
+	}
+#instruction_show{
+	font-size:15px;
+	color:black;
+	}
+
+/* bottom */
+#bottom{
+	background:#F7F7F7;
+	width:975px;
+	margin-top:0px;
+	height:50px;
+	margin:auto;
+}
+.bottom_content{
+  width:975px;
+  height:50px;
+  margin-left:120px;
+}
+.bottom_content ul{
+	margin:0;
+	padding:0;
+}
+.bottom_content ul li{
+	float:left;
+	list-style-type:none;
+	padding:0 9px;
+	height:50px;
+	line-height:50px;
+}
+.bottom_content ul li a{
+	text-decoration:none;
+	color:#666;
+}
+.bottom_content ul li.xian{
+	padding:0;
+	color:black;
+}

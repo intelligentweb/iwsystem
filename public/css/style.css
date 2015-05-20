@@ -1,0 +1,49 @@
+
+* {
+	margin:0px;
+	padding:0px; 
+	list-style: none;
+	}
+#box {
+	width:310px; 
+	height:170px; 
+	
+	position: relative; 
+	overflow: hidden;
+	z-index:5000;
+	background:#fff; 
+	margin:0px auto; 
+	}
+#list {
+	position: absolute;
+	left: -2px;
+	top: 0px;
+}
+#list li {
+	width:310px; 
+	height:170px; 
+	cursor: pointer;
+	}
+#num {
+	position: 
+	absolute; 
+	right:10px; 
+	bottom:10px;
+	}
+#num li {
+	width:16px; 
+	height:16px; 
+	float:left; 
+	margin-right:2px; 
+	color:#fff; 
+	cursor: pointer; 
+	font-size: 12px; 
+	font-family:'Arial'; 
+	line-height:16px; 
+	text-align: center; 
+	border:1px solid #fff;
+	}
+.active {
+	background:#ff6600;
+	}
+
