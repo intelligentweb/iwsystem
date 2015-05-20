@@ -84,30 +84,33 @@ for(var count = 0;count<names.length;count++){
 var myquery = '\''+'from:'+names[namecount]+' '+searchDay+'\''; 
 //var myquery = '\''+' '+searchDay+'\''; 
 
-console.log(names[namecount]);
-console.log(myquery);
+// console.log(names[namecount]);
+// console.log(myquery);
 // T.get('statuses/user_timeline', { screen_name :names[namecount] }, function(err, data, response) {
 T.get('search/tweets', { q: myquery },function(err, data, response) {
 
 
 
-console.log("now number is : "+num );
-console.log(myquery);
+// console.log("now number is : "+num );
+// console.log(myquery);
 
  for (var indx in data.statuses) {
 
 var tweet= data.statuses[indx];
 var reg = / /;
 var res = tweet.text.split(reg);   
+console.log(res);
+console.log("************************************");
 
 for (var index=0;index<res.length;index++) {
+	console.log(res[index]);
 
-
-
+if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="RT"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
+console.log("enter");
 if(personalkey[num].length == 0){
 
-	console.log("now is using: "+num);
-	personalkey[num][0] = res[0];
+	// console.log("now is using: "+num);
+	personalkey[num][0] = res[index];
 	numberofkey[num][0] = 1;
 
 	// console.log(res[0]+"put into[0][0],number : "+numberofkey[0][0]);
@@ -133,18 +136,22 @@ if(personalkey[num].length == 0){
 		}
 	}
 }
+
+
+}
+
 }
 
 
 
 for (var index=0;index<res.length;index++) {
 
-
+if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="RT"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
 
 if(totalkey.length == 0){
 
-	console.log("now is using: "+num);
-	totalkey[0] = res[0];
+	// console.log("now is using: "+num);
+	totalkey[0] = res[index];
 	totalnumberofkey[0] = 1;
 
 	// console.log(res[0]+"put into[0][0],number : "+numberofkey[0][0]);
@@ -170,6 +177,9 @@ if(totalkey.length == 0){
 		}
 	}
 }
+
+}
+
 }
 
 
@@ -199,8 +209,8 @@ if(num==names.length)
 {
 
 // console.log("total key");
-// console.log(totalkey);
-// console.log(totalnumberofkey);
+ console.log(totalkey);
+ console.log(totalnumberofkey);
 
 for(var i=0;i<totalkey.length;i++){  
 
@@ -241,9 +251,8 @@ for(var i=0;i<deleteKey.length;i++){
 
 }
 
-console.log("0"+personalkey[0]);    
-console.log("1"+personalkey[1]); 
-console.log("2"+personalkey[2]);    
+console.log(personalkey[0]);    
+console.log(personalkey[1]); 
 console.log(totalkey);          
 
 
