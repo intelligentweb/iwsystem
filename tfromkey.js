@@ -12,6 +12,8 @@ var T = new Twit({
   , access_token_secret:  'PUJoydFfkulfn3TNqjT3HAxhwFUHga5kxe8yh4aS53zfk'
 })
 
+
+
 function getres(res){
 	return res;
 }
@@ -33,36 +35,37 @@ function(err, data,response, getres) {
 
 
 console.log('enter t.get  callback');
-var date = new Array(10);
-for (var indexa=0;indexa<date.length;indexa++) {
-	date[indexa] = " ";
-}
+ var date = new Array();
+// for (var indexa=0;indexa<date.length;indexa++) {
+// 	date[indexa] = " ";
+// }
 
-var who = new Array(10);
-for (var indexa=0;indexa<who.length;indexa++) {
-	who[indexa] = " ";
-}
+var who = new Array();
+// for (var indexa=0;indexa<who.length;indexa++) {
+// 	who[indexa] = " ";
+// }
 
-var content = new Array(10);
-for (var indexa=0;indexa<content.length;indexa++) {
-	content[indexa] = " ";
-}
+var content = new Array();
+// for (var indexa=0;indexa<content.length;indexa++) {
+// 	content[indexa] = " ";
+// }
 
-var tweetID = new Array(10);
-for (var indexa=0;indexa<content.length;indexa++) {
-	tweetID[indexa] = " ";
-}
+var tweetID = new Array();
+// for (var indexa=0;indexa<content.length;indexa++) {
+// 	tweetID[indexa] = " ";
+// }
 
-var IDstr = new Array(10);
-for (var indexa=0;indexa<content.length;indexa++) {
-  IDstr[indexa] = " ";
-}
+var IDstr = new Array();
+// for (var indexa=0;indexa<content.length;indexa++) {
+//   IDstr[indexa] = " ";
+// }
 
 var peopleretweet = new Array(); 
-for(i=0;i<=tweetID.length;i++) 
-{ 
-    peopleretweet[i]=new Array(); 
-} 
+
+// for(i=0;i<=tweetID.length;i++) 
+// { 
+//     peopleretweet[i]=new Array(); 
+// } 
 
 
 
@@ -73,32 +76,41 @@ var tweet= data.statuses[indx];
 date[indx]=tweet.created_at;
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
-tweetID[indexa]=tweet.id;
-IDstr[indexa]=tweet.id_str;
-//console.log(tweet.id_str);
+tweetID[indx]=tweet.id;
+IDstr[indx]=tweet.id_str.toString();
 }
 
 //res.end();
 //string_decoder.StringDecoder(encoding);
 
+ 
+
+
 
 ///////////////////////////////////////////////////////////////retweet
 for(var i =0;i<tweetID.length;i++){
 
-T.get('statuses/retweets/:id', { id :'\''+ IDstr[i] +'\'' },function(err, data, response) {
+var query = '\''+IDstr[i]+ '\'';
+T.get('statuses/retweets/:id', { id : IDstr[i] },function(err, data, response) {
 
-for(var indx in data){
-var tweet= data.user[indx];
- // console.log('@@@@@@@@@@@@@'+tweet.name);
-    peopleretweet[i]=tweet.name;
-console.log('@@@@@@@@@@@@@'+data[0].user.name);
+    peopleretweet[i]=" ";
 
+for(var k =0; k<data.length;k++){
+
+      peopleretweet[i] = peopleretweet[i]+data[k].user.name+'|  ';
+
+      console.log("peopleretweet:"+i+"  "+"k="+k+"  "+peopleretweet[i]);
 }
+ 
+
+      console.log(peopleretweet);
+
 
               
     
 
 num+=1;
+
 
 
 if(num==tweetID.length)
@@ -127,7 +139,7 @@ for(var j=0;j<who.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'+'<td>'+peopleretweet[j]+'</td>'
+html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'+'<td>'+peopleretweet[j+1]+'</td>'
 
 html+=
 '</tr>'
@@ -144,11 +156,12 @@ html+=
   
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
-    res.end();
+      res.end();
 
 }
 })
 }
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 
@@ -156,7 +169,7 @@ html+=
 
 
 //return date;
-})
+})  // 
  
 
  }
