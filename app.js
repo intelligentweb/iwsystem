@@ -11,8 +11,10 @@ var index = require('./routes/index');
 var result = require('./routes/result');
 var tfromkey = require('./tfromkey');
 var venuefromuser = require('./venuefromuser');
-var userfromvenue= require('./userfromvenue2')
-var keyfromname = require('./keyfromname2')
+var userfromvenue= require('./userfromvenue2');
+var keyfromname = require('./keyfromname2');
+var namefromvenuennow = require('./namefromvenuenow');
+
 var app = express();
 var http = require('http');
 var url = require('url');
@@ -139,7 +141,9 @@ var server = http.createServer(function (request, response) {
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,3,20,response);}
             if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
-            if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
+           // if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
+            if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+
 
             //database.showuserinfor('ShengyanZhao');
      console.log('response end');
