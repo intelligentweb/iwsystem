@@ -52,17 +52,36 @@
 
 // console.log(totalkey);
 
-var Upper = new Array();
-Upper = ["ONE","TWO","THREE"];
+// var Upper = new Array();
+// Upper = ["ONE","TWO","THREE"];
 
-console.log(Upper);
+// console.log(Upper);
 
 
-for(var i=0;i<Upper.length;i++){
-	var a = Upper[i].toLowerCase();
-	Upper[i].toString().toLowerCase();
-	console.log(a);
+// for(var i=0;i<Upper.length;i++){
+// 	var a = Upper[i].toLowerCase();
+// 	Upper[i].toString().toLowerCase();
+// 	console.log(a);
+// }
+
+var Twit = require('twit')
+
+var T = new Twit({
+    consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
+  , consumer_secret:      'smC1FdIpWDclsGhZQiaCecXoNlHcOut0CnYaLTlCVBXt8eoCZw'
+  , access_token:         '3145436519-1WrmNdLDOAsqvgRl6t811ESOGHyKdb9JnxpNh1F'
+  , access_token_secret:  'PUJoydFfkulfn3TNqjT3HAxhwFUHga5kxe8yh4aS53zfk'
+
+  
+})
+
+// console.log("now number is : "+num );
+// console.log(myquery);
+console.log(data);
+ for (var indx in data.statuses) {
+
+var tweet= data.statuses[indx];
+console.log(tweet);
 }
 
-
-
+})
