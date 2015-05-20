@@ -33,6 +33,7 @@ for(i=0;i<=names.length;i++)
 
 var totalkey = new Array();
 var totalnumberofkey = new Array();
+var deleteKey = new Array();
 
 
 var num = 0;
@@ -89,7 +90,9 @@ console.log(myquery);
 T.get('search/tweets', { q: myquery },function(err, data, response) {
 
 
+
 console.log("now number is : "+num );
+console.log(myquery);
 
  for (var indx in data.statuses) {
 
@@ -172,8 +175,6 @@ if(totalkey.length == 0){
 
 }
 
-
-
     for(var i=0;i<totalnumberofkey.length;i++){  
 
         for(var j=i;j<totalnumberofkey.length;j++){  
@@ -191,15 +192,72 @@ if(totalkey.length == 0){
         }  
     }  
 // }
-console.log(totalkey);
-console.log(totalnumberofkey);
-console.log(personalkey[0].length);
-console.log(numberofkey[0].length);
 
 num+=1;
 
 if(num==names.length)
 {
+
+// console.log("total key");
+// console.log(totalkey);
+// console.log(totalnumberofkey);
+
+for(var i=0;i<totalkey.length;i++){  
+
+var deleteThis = 0;
+
+	for(var j=0;j<names.length;j++){
+		var has = 0;
+		for(var p=0;p<personalkey[j].length;p++){
+
+			if(totalkey[i]==personalkey[j][p]){
+				has = 1;
+			}
+
+		}
+		if(has == 1){
+			deleteThis = 0;
+		}else{
+			deleteThis = 1;
+		}
+		if(deleteThis == 1){
+			deleteKey[deleteKey.length] = totalkey[i];
+		}
+
+	}
+}
+
+
+for(var i=0;i<deleteKey.length;i++){  
+
+	for(var j=0;j<totalkey.length;j++){  
+
+		if(deleteKey[i]==totalkey[j]){
+			totalkey.splice(j,1);
+			break;
+		}
+
+	}
+
+}
+
+console.log("0"+personalkey[0]);    
+console.log("1"+personalkey[1]); 
+console.log("2"+personalkey[2]);    
+console.log(totalkey);          
+
+
+// console.log("total key");
+// console.log(totalkey);
+// console.log(totalnumberofkey);
+
+// for(var i=0;i<names.length;i++){  
+// console.log("name:"+names[i]);
+// console.log(personalkey[i]);
+// console.log(numberofkey[i]);
+// }
+
+
 var html =
 '<!DOCTYPE html>'+
 '<html>'+

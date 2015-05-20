@@ -10,7 +10,7 @@ body{
 }
 /* head */
 .head{
-		width:975px;
+		width:650px;
 		margin:0 auto;
 		border:1px solid #CCCCCC;
 		height:90px;
@@ -23,11 +23,11 @@ body{
 		float:left;
 	}
 	#head_title{
-		width:700px;
+		width:500px;
 		height:90px;
 		font-weight:900;
 		float:left;
-		font-size:40px;
+		font-size:30px;
 		color:#009999;
 		line-height:90px;
 		
@@ -37,13 +37,13 @@ body{
 	width:650px;
 	height:5px;
 	}
-.wrapper{
-	margin:5 auto;
+/*.wrapper{
+	margin:0 auto;
 	width:975px;
 	height:580px;
-}
+}*/
 #wrapper_left{
-	float:left;
+	margin:0 auto;
 	width:650px;
 	height:580px;
 }
@@ -156,15 +156,15 @@ body{
 /* bottom */
 #bottom{
 	background:#F7F7F7;
-	width:975px;
+	width:650px;
 	margin-top:-20px;
 	height:50px;
 	margin:auto;
 }
 .bottom_content{
-  width:975px;
+  width:650px;
   height:50px;
-  margin-left:120px;
+  margin-left:80px;
 }
 .bottom_content ul{
 	margin:0;
@@ -173,7 +173,7 @@ body{
 .bottom_content ul li{
 	float:left;
 	list-style-type:none;
-	padding:0 9px;
+	/*padding:0 5px;*/
 	height:50px;
 	line-height:50px;
 }
