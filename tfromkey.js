@@ -103,7 +103,7 @@ for(var k =0; k<data.length;k++){
 }
  
 
-      console.log(peopleretweet);
+      // console.log(peopleretweet);
 
 
               
