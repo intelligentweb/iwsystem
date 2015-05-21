@@ -139,7 +139,8 @@ for(var j=0;j<who.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'+'<td>'+peopleretweet[j+1]+'</td>'
+html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'
+html+='<td>'+'<input  name = "redetail" type="submit" value='+ 'Test' +'>'+'</td>'
 
 html+=
 '</tr>'
