@@ -98,15 +98,14 @@ function getres(res){
 var tweets = new Array();
  
 
-T.get('statuses/retweets/:id', { id : IDstr[i] },function(err, data, response) {
+T.get('statuses/retweets/:id', { id : id },function(err, data, response) {
 
-    peopleretweet[i]=" ";
 
 for(var k =0; k<data.length;k++){
 
-      peopleretweet[i] = peopleretweet[i]+data[k].user.name+'|  ';
+      tweets[k] = data[k].user.name;
 
-      console.log("peopleretweet:"+i+"  "+"k="+k+"  "+peopleretweet[i]);
+      // console.log("peopleretweet:"+"  "+"k="+k+"  "+tweets[k]);
 }
  
 
@@ -123,17 +122,26 @@ var html =
 '<form action="http://localhost:3000/index.html" method="POST">'+
 
 '<body>'+
-'<h1>Result:'+'</h1>'+
+'<h1>Result:'+'Retweeter'+'</h1>'+
 '<table border="1">'+
 
 '<tr>'+
 '<th>'+
-'Tweets'+
+'Names'+
 '</th>'+
 '</tr>'
 
-+
+for(var j=0;j<tweets.length;j++){
+
+html+='<tr>'
+
+html+='<td>'+tweets[j]+'</td>'
+
+
+html+=
 '</tr>'
+
+}
 
 
 

@@ -30,42 +30,17 @@ if(key==''&& Location=='' ){
 
 if(key!=''){
 
-T.get('search/tweets', { q: key,geocode:Location,count: 10 },
+T.get('search/tweets', { q: key,geocode:Location,count: 50 },
 function(err, data,response, getres) {
 
 
 console.log('enter t.get  callback');
- var date = new Array();
-// for (var indexa=0;indexa<date.length;indexa++) {
-// 	date[indexa] = " ";
-// }
-
+var date = new Array();
 var who = new Array();
-// for (var indexa=0;indexa<who.length;indexa++) {
-// 	who[indexa] = " ";
-// }
-
 var content = new Array();
-// for (var indexa=0;indexa<content.length;indexa++) {
-// 	content[indexa] = " ";
-// }
-
 var tweetID = new Array();
-// for (var indexa=0;indexa<content.length;indexa++) {
-// 	tweetID[indexa] = " ";
-// }
-
 var IDstr = new Array();
-// for (var indexa=0;indexa<content.length;indexa++) {
-//   IDstr[indexa] = " ";
-// }
-
 var peopleretweet = new Array(); 
-
-// for(i=0;i<=tweetID.length;i++) 
-// { 
-//     peopleretweet[i]=new Array(); 
-// } 
 
 
 
@@ -79,42 +54,9 @@ content[indx]=tweet.text;
 tweetID[indx]=tweet.id;
 IDstr[indx]=tweet.id_str.toString();
 }
-
-//res.end();
-//string_decoder.StringDecoder(encoding);
-
  
 
 
-
-///////////////////////////////////////////////////////////////retweet
-for(var i =0;i<tweetID.length;i++){
-
-var query = '\''+IDstr[i]+ '\'';
-T.get('statuses/retweets/:id', { id : IDstr[i] },function(err, data, response) {
-
-    peopleretweet[i]=" ";
-
-for(var k =0; k<data.length;k++){
-
-      peopleretweet[i] = peopleretweet[i]+data[k].user.name+'|  ';
-
-      console.log("peopleretweet:"+i+"  "+"k="+k+"  "+peopleretweet[i]);
-}
- 
-
-      // console.log(peopleretweet);
-
-
-              
-    
-
-num+=1;
-
-
-
-if(num==tweetID.length)
-{
 var html =
 '<!DOCTYPE html>'+
 '<html>'+
@@ -124,6 +66,7 @@ var html =
 '</head>'+
 
 '<body>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
 '<h1>Result:</h1>'+
 '<h1>Keywords:'+key+'</h1>'+
 '<table border="1">'+
@@ -140,7 +83,7 @@ for(var j=0;j<who.length;j++){
 html+='<tr>'
 
 html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'
-html+='<td>'+'<input  name = "redetail" type="submit" value='+ 'Test' +'>'+'</td>'
+html+='<td>'+'<input  name = "redetail" type="submit" value='+ IDstr[j] +'>'+'</td>'
 
 html+=
 '</tr>'
@@ -148,7 +91,7 @@ html+=
 }
 html+=
 '</table>'+
-
+'</form>'+
 '</body>'+
 
 '</html>'
@@ -159,21 +102,10 @@ html+=
       res.write(html);
       res.end();
 
-}
-})
-}
 
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-//return date;
-})  // 
+})  
  
-
- }
+}
 
 }
 

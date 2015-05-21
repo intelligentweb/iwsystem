@@ -81,9 +81,8 @@ var html =
     '<meta charset="UTF-8">'+
     '<title>form</title>'+
 '</head>'+
-'<form action="http://localhost:3000/index.html" method="POST">'+
-
 '<body>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
 '<h1>Result:</h1>'+
 '<h1>Location:'+venuename+'</h1>'+
 '<table border="1">'+
