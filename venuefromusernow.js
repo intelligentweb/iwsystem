@@ -10,14 +10,14 @@ var headers = {
 }
 // Configure the request
 var options = {
-url: 'https://api.foursquare.com/v2/checkins/resolve',
+url: 'https://api.foursquare.com/v2/users/search',
 method: 'GET',
 headers: headers,
-qs: {'shortId': 'egxkO7tpTS3','oauth_token': 'TNE31IIHKAZWDBH2Z5GWRRA4QJH0U25EOQTTS0UOCVE1LZ30',
+qs: {'twitter': 'ShengyanZhao','oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 'v' :'20140806', m: 'swarm'}
 }
 
-
+var userid=null;
 
 request(options,function (error, response, body, getres) {
 if (!error && response.statusCode == 200) {
@@ -26,14 +26,33 @@ if (!error && response.statusCode == 200) {
 //console.log(body);
 var jsontext = body;  
 var contact = JSON.parse(jsontext);
+userid = contact.response.results[0].id;
 
-console.log(contact.response.checkin.venue.name);
+console.log(contact.response.results[0].id);
 // console.log('i2='+i);
-// console.log(places);
+// console.log(places);ShengyanZhao
 // console.log('count='+count);
 
+
+
+var fsconn = {
+  clientId: '2DSWUN',
+  clientSecret: 'YCSISJ'
 }
 
+var foursquare = require('foursquare-streams').createClient(fsconn)
+
+var opts = {
+  'near': 'NYC',
+  'limit': 50,
+}
+
+foursquare.getVenues(opts).pipe(...) // pipe that stream, dog!
 
 
+
+
+
+}
 })
+
