@@ -76,18 +76,35 @@ var T = new Twit({
 })
 				//-2.56475248726412,  53.3015341502953
 
-<<<<<<< HEAD
-T.get('search/tweets', { q:'',geocode:'-2.56475248726412,53.3015341502953,100mi'},function(err, data, response) {
-=======
-<<<<<<< HEAD
+var venuename = 'Sheffield';
+var position = new Array(4); 
+var namelist = new Array;
+var query_place = '\''+ venuename  +'\'';
 
-T.get('search/tweets', { q:'' ,geocode:'-2.473228,53.144425,100mi'},function(err, data, response) {
-=======
-T.get('search/tweets', { q:'banana',geocode:'-2.56475248726412, 53.3015341502953,10000mi'},function(err, data, response) {
->>>>>>> origin/master
->>>>>>> origin/master
-// console.log("now number is : "+num );
-// console.log(myquery);
+T.get('geo/search', { query: query_place },function(err, data, response) {
+	var myLocation = '\'';
+	var myQuery 
+//console.log(data.result.places[0].bounding_box.coordinates[0][0][0]);
+    position[0]=data.result.places[0].bounding_box.coordinates[0][0][0];
+    position[1]=data.result.places[0].bounding_box.coordinates[0][0][1];
+    position[2]=data.result.places[0].bounding_box.coordinates[0][2][0];
+    position[3]=data.result.places[0].bounding_box.coordinates[0][2][1];
+
+
+	myLocation +=  position[0];
+	myLocation += ',';
+	myLocation +=  position[1];
+	myLocation += ',100mi';
+	myLocation += '\'';
+
+console.log(myLocation);
+
+
+
+T.get('search/tweets', { q:'',geocode:'-1.573648,53.309898,100mi'},function(err, data, response) {
+
+
+
 
 console.log(data.statuses.length);
 
@@ -100,5 +117,10 @@ console.log(data.statuses[i].user.name);
 // var tweet= data.statuses[indx];
 // console.log(tweet);
 // }
+
+})
+
+
+
 
 })
