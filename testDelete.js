@@ -75,7 +75,7 @@ var T = new Twit({
   
 })
 
-T.get('search/tweets', { q:'banana',geocode:'-2.56475248726412, 53.3015341502953,10000mi'},function(err, data, response) {
+T.get('search/tweets', { q:'',geocode:'-2.56475248726412,53.3015341502953,100mi'},function(err, data, response) {
 // console.log("now number is : "+num );
 // console.log(myquery);
 console.log(data);
