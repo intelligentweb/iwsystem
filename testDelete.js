@@ -74,15 +74,23 @@ var T = new Twit({
 
   
 })
+				//-2.56475248726412,  53.3015341502953
 
-T.get('search/tweets', { q:'' ,geocode:'-2.56475248726412, 53.3015341502953,1mi'},function(err, data, response) {
+
+T.get('search/tweets', { q:'' ,geocode:'-2.473228,53.144425,100mi'},function(err, data, response) {
 // console.log("now number is : "+num );
 // console.log(myquery);
-console.log(data);
- for (var indx in data.statuses) {
 
-var tweet= data.statuses[indx];
-console.log(tweet);
+console.log(data.statuses.length);
+
+for (i=0 ;i<data.statuses.length;i++){
+console.log(data.statuses[i].user.name);
 }
+
+//  for (var indx in data.statuses) {
+
+// var tweet= data.statuses[indx];
+// console.log(tweet);
+// }
 
 })
