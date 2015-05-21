@@ -72,16 +72,15 @@ var T = new Twit({
   , access_token:         '3145436519-1WrmNdLDOAsqvgRl6t811ESOGHyKdb9JnxpNh1F'
   , access_token_secret:  'PUJoydFfkulfn3TNqjT3HAxhwFUHga5kxe8yh4aS53zfk'
 
-  
+
 })
 				//-2.56475248726412,  53.3015341502953
 
-<<<<<<< HEAD
+
 
 T.get('search/tweets', { q:'' ,geocode:'-2.473228,53.144425,100mi'},function(err, data, response) {
-=======
-T.get('search/tweets', { q:'banana',geocode:'-2.56475248726412, 53.3015341502953,10000mi'},function(err, data, response) {
->>>>>>> origin/master
+
+
 // console.log("now number is : "+num );
 // console.log(myquery);
 
