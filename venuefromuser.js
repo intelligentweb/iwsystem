@@ -56,7 +56,7 @@ var options = {
 url: 'https://api.foursquare.com/v2/checkins/resolve',
 method: 'GET',
 headers: headers,
-qs: {'shortId': shortids[i],'oauth_token': 'TNE31IIHKAZWDBH2Z5GWRRA4QJH0U25EOQTTS0UOCVE1LZ30',
+qs: {'shortId': shortids[i],'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 'v' :'20140806', m: 'swarm'}
 }
 // Start the request

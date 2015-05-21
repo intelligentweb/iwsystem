@@ -3,45 +3,40 @@
 <head>
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
  <style type="text/css">
- html {
- height: 100%
- }
- body {
- height: 100%;
- margin: 0;
- padding: 0
- }
- #map-canvas {
- height: 100%
- }
+ html { height: 100% }
+ body { height: 100%; margin: 0; padding: 0 }
+ #map-canvas { height: 100% }
  </style>
  <title>Where I work</title>
  <script type="text/javascript"
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_BbMxx-ILdm9CFhwVs6_qDr3qr9_qpMQ&sensor=false">
  </script>
-
-  <script type="text/javascript">
+ <script type="text/javascript">
  function initialize() {
  var myLatlng = new google.maps.LatLng(53.38108855193859, -1.4801287651062012);
  var mapOptions = {
  zoom: 18,
- center: myLatlng
- }
+ center: myLatlng }
  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-// To add the marker to the map, use the 'map' property
  var marker = new google.maps.Marker({
  position: myLatlng,
  map: map,
- title:"Hello World!"
- });
+ title:"Here!!" });
+
+ var infowindow = new google.maps.InfoWindow({
+ content: '<IMG BORDER="0" ALIGN="Left" height="82" hspace="10" vspace="10" SRC="http://www.3dmgame.com/uploads/allimg/150521/153_150521155443_1_lit.jpg"> I work at the Department of Computer Science, The University of Sheffield',
+ maxWidth:200 });
+
+
+ infowindow.open(map,marker);
+ google.maps.event.addListener(marker, 'click', function() {
+ infowindow.open(map, marker); });
  }
  google.maps.event.addDomListener(window, 'load', initialize);
  </script>
 </head>
-
 <body>
 <h1>Where I work</h1>
 <div id="map-canvas" style="background-color:#FFD700;width:50%;height:300pt;align:center;"/>
 <div><p>I work at the Department of Computer Science</p></div>
 </body>
-</html>
