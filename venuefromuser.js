@@ -17,20 +17,16 @@ function getres(res){
   return res;
 }
 
+
+// var screen_name='Bryankorourke';
+
 var quary='swarmapp/c/ from:';
 
 //T.get('search/tweets', { q:'swarmapp/c/ from:stevewoz' ,count: 5 }, function(err, data, response,getres) {
-T.get('search/tweets', { q:quary+screen_name ,count: 5 }, function(err, data, response,getres) {
+T.get('search/tweets', { q:quary+screen_name ,count: 50 }, function(err, data, response,getres) {
   
-var shortids = new Array(10);
-for (var indexa=0;indexa<shortids.length;indexa++) {
-  shortids[indexa] = " "; 
-}
-
-var places = new Array(10);
-for (var indexa=0;indexa<places.length;indexa++) {
-  places[indexa] = " "; 
-}
+var shortids = new Array();
+var places = new Array();
 
 for (var indx in data.statuses) {
 var reg = 'https://www.swarmapp.com/c/'; 
@@ -38,7 +34,7 @@ var s1 = JSON.stringify(data.statuses[indx].entities.urls);
  var s2 = s1.split(reg);
  var s3 =s2[1].split(/"/);
   shortids[indx]=s3[0];
-  //console.log(shortids[indx]);
+  console.log(shortids[indx]);
 }
 
 
@@ -76,13 +72,16 @@ var contact = JSON.parse(jsontext);
 places[count]=contact.response.checkin.venue.name;
 // console.log(contact.response.checkin.venue.name);
 // console.log('i2='+i);
-// console.log(places);
+ // console.log(places);
 // console.log('count='+count);
 count++;
 }
-console.log(count);
-console.log('i='+i);
-if(count==5){
+ console.log(count);
+// console.log('i='+i);
+
+
+
+if(count==shortids.length){
 // console.log(places);
 
 var html =
@@ -102,7 +101,7 @@ var html =
 '<th>Places</th>'+
 '</tr>'
 
-for(var j=0;j<shortids.length;j++){
+for(var j=0;j<places.length;j++){
 
 html+='<tr>'
 

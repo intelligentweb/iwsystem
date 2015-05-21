@@ -15,6 +15,14 @@ var T = new Twit({
 var position = new Array(4); 
 var namelist = new Array;
 var query_place = '\''+ venuename  +'\'';
+var useratthere = new Array();
+var userNames = new Array();
+var userLocations = new Array();
+var userDescription = new Array();
+var userImage = new Array();
+
+
+
 
 T.get('geo/search', { query: query_place },function(err, data, response) {
 
@@ -36,47 +44,71 @@ var stream = T.stream('statuses/filter', { locations: position,stall_warnings: t
 var i=0;
 stream.on('tweet', function (tweet) {
 	
- console.log(tweet.user.name);
  console.log(i);
-  
-  namelist[i]=tweet.user.name;
+
+useratthere[i]=tweet.user.screen_name;
+userNames[i]=tweet.user.name;
+userLocations[i]=tweet.user.location;
+userDescription[i]=tweet.user.description;
+userImage[i]= tweet.user.profile_image_url;
+
+
 
   i++;
-  if(i== 3)
+  if(i== 5)
   {
   	stream.stop();
 
 
-var html =
+var html = 
 '<!DOCTYPE html>'+
 '<html>'+
 '<head lang="en">'+
     '<meta charset="UTF-8">'+
     '<title>form</title>'+
 '</head>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
 
 '<body>'+
 '<h1>Result:</h1>'+
-'<h1>Keywords:'+venuename+'</h1>'+
+'<h1>Location:'+venuename+'</h1>'+
 '<table border="1">'+
 
 '<tr>'+
-'<th>Namelist</th>'+
+'<th>'+
+'<td>Screen Name</td>'+
+'<td>Name</td>'+
+'<td>Location</td>'+
+'<td>Description</td>'+
+'<td>More Information</td>'+
+'</th>'+
 '</tr>'
 
-for(var j=0;j<namelist.length;j++){
+for(var j=0;j<useratthere.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+namelist[j]+'</td>'
+html+='<td>'+'<img src="'+userImage[j]+'" >'+'</td>'
+
+html+='<td>'+useratthere[j]+'</td>'
+
+html+='<td>'+userNames[j]+'</td>'
+
+html+='<td>'+userLocations[j]+'</td>'
+
+html+='<td>'+userDescription[j]+'</td>'
+
+html+='<td>'+'<input  name = "detail" type="submit" value='+ useratthere[j] +'>'+'</td>'
 
 html+=
 '</tr>'
 
 }
+
+
 html+=
 '</table>'+
-
+'</form>'+
 '</body>'+
 
 '</html>'
