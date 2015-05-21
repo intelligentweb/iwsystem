@@ -47,7 +47,6 @@ var peopleretweet = new Array();
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
-
 date[indx]=tweet.created_at;
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
@@ -83,8 +82,8 @@ for(var j=0;j<who.length;j++){
 html+='<tr>'
 
 html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'
-html+='<td>'+'<input  name = "redetail" type="submit" value='+ IDstr[j] +'>'+'</td>'
-
+html+='<td><button name="redetail" type="submit" value='+IDstr[j]+'>'+'Click'+'</button></td>'
+// +'<input  name = "redetail" type="submit" value='+ IDstr[j] +'>'+
 html+=
 '</tr>'
 

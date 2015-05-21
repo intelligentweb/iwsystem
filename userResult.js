@@ -96,15 +96,15 @@ function getres(res){
 }
 
 var tweets = new Array();
- 
+var images = new Array();
 
 T.get('statuses/retweets/:id', { id : id },function(err, data, response) {
 
 
 for(var k =0; k<data.length;k++){
-
+      console.log(data[k]);
       tweets[k] = data[k].user.name;
-
+      images[k] = data[k].user.profile_image_url;
       // console.log("peopleretweet:"+"  "+"k="+k+"  "+tweets[k]);
 }
  
@@ -137,6 +137,7 @@ html+='<tr>'
 
 html+='<td>'+tweets[j]+'</td>'
 
+html+='<td>'+'<img src="'+images[j]+'" >'+'</td>'
 
 html+=
 '</tr>'

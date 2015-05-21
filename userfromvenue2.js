@@ -111,7 +111,8 @@ html+='<td>'+userLocations[j]+'</td>'
 
 html+='<td>'+userDescription[j]+'</td>'
 
-html+='<td>'+'<input  name = "detail" type="submit" value='+ useratthere[j] +'>'+'</td>'
+html+='<td><button name="detail" type="submit" value='+useratthere[j]+'>'+'Click'+'</button></td>'
+// html+='<td>'+'<input  name = "detail" type="submit" value='+ useratthere[j] +'>'+'</td>'
 
 html+=
 '</tr>'
