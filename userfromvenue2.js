@@ -14,6 +14,10 @@ var T = new Twit({
 
 
 var useratthere = new Array();
+var userNames = new Array();
+var userLocations = new Array();
+var userDescription = new Array();
+var userImage = new Array();
 
 //choose time*****************************************************************************************************************
 var day = days;
@@ -58,11 +62,16 @@ T.get('search/tweets', { q:myquery },function(err, data, response) {
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
+console.log(tweet.user);
 // var reg = / /;
 // var res = tweet.text.split(reg);   
 //console.log(tweet.user.screen_name);
 
 useratthere[indx]=tweet.user.screen_name;
+userNames[indx]=tweet.user.name;
+userLocations[indx]=tweet.user.location;
+userDescription[indx]=tweet.user.description;
+userImage[indx]= tweet.user.profile_image_url;
 console.log(useratthere[indx]);
 }
 
@@ -82,19 +91,37 @@ var html =
 '<table border="1">'+
 
 '<tr>'+
-'<th>NameList</th>'+
+'<th>'+
+'<td>Screen Name</td>'+
+'<td>Name</td>'+
+'<td>Location</td>'+
+'<td>Description</td>'+
+'<td>More Information</td>'+
+'</th>'+
 '</tr>'
 
 for(var j=0;j<useratthere.length;j++){
 
 html+='<tr>'
 
+html+='<td>'+'<img src="'+userImage[j]+'" >'+'</td>'
+
 html+='<td>'+useratthere[j]+'</td>'
+
+html+='<td>'+userNames[j]+'</td>'
+
+html+='<td>'+userLocations[j]+'</td>'
+
+html+='<td>'+userDescription[j]+'</td>'
+
+html+='<td>'+'<a href="http://localhost:3000/result">find tweets of this user'+'</td>'
 
 html+=
 '</tr>'
 
 }
+
+
 html+=
 '</table>'+
 
