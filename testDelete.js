@@ -74,43 +74,43 @@ var T = new Twit({
 
   
 })
-				//-2.56475248726412,  53.3015341502953
+// 				//-2.56475248726412,  53.3015341502953
 
-var venuename = 'Sheffield';
-var position = new Array(4); 
-var namelist = new Array;
-var query_place = '\''+ venuename  +'\'';
+// var venuename = 'Sheffield';
+// var position = new Array(4); 
+// var namelist = new Array;
+// var query_place = '\''+ venuename  +'\'';
 
-T.get('geo/search', { query: query_place },function(err, data, response) {
-	var myLocation = '\'';
-	var myQuery 
-//console.log(data.result.places[0].bounding_box.coordinates[0][0][0]);
-    position[0]=data.result.places[0].bounding_box.coordinates[0][0][0];
-    position[1]=data.result.places[0].bounding_box.coordinates[0][0][1];
-    position[2]=data.result.places[0].bounding_box.coordinates[0][2][0];
-    position[3]=data.result.places[0].bounding_box.coordinates[0][2][1];
-
-
-	myLocation +=  position[0];
-	myLocation += ',';
-	myLocation +=  position[1];
-	myLocation += ',100mi';
-	myLocation += '\'';
-
-console.log(myLocation);
+// T.get('geo/search', { query: query_place },function(err, data, response) {
+// 	var myLocation = '\'';
+// 	var myQuery 
+// //console.log(data.result.places[0].bounding_box.coordinates[0][0][0]);
+//     position[0]=data.result.places[0].bounding_box.coordinates[0][0][0];
+//     position[1]=data.result.places[0].bounding_box.coordinates[0][0][1];
+//     position[2]=data.result.places[0].bounding_box.coordinates[0][2][0];
+//     position[3]=data.result.places[0].bounding_box.coordinates[0][2][1];
 
 
+// 	myLocation +=  position[0];
+// 	myLocation += ',';
+// 	myLocation +=  position[1];
+// 	myLocation += ',100mi';
+// 	myLocation += '\'';
 
-T.get('search/tweets', { q:'',geocode:'-1.573648,53.309898,100mi'},function(err, data, response) {
+// console.log(myLocation);
 
 
 
+T.get('statuses/user_timeline', { screen_name :'kwangger' , count:100},function(err, data, response) {
 
-console.log(data.statuses.length);
 
-for (i=0 ;i<data.statuses.length;i++){
-console.log(data.statuses[i].user.name);
+for(var i =0;i<data.length;i++)
+{
+console.log(data[i].text);
 }
+// for (i=0 ;i<data.statuses.length;i++){
+// console.log(data.statuses[i].user.name);
+// }
 
 //  for (var indx in data.statuses) {
 
@@ -123,4 +123,4 @@ console.log(data.statuses[i].user.name);
 
 
 
-})
+// })

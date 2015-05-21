@@ -10,6 +10,7 @@ var ejs = require('ejs');
 var index = require('./routes/index');
 var result = require('./routes/result');
 var tfromkey = require('./tfromkey');
+var showresult = require('./userResult');
 var venuefromuser = require('./venuefromuser');
 var userfromvenue= require('./userfromvenue2');
 var keyfromname = require('./keyfromname2');
@@ -36,9 +37,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 //app.use('/tfromkey', tfromkey);
-app.use('/result', result);
+// app.use('/result', result);
 
+app.get('/result',function (req,res) {
 
+res.send('about requested');
+
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -143,7 +148,10 @@ var server = http.createServer(function (request, response) {
             if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
             if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
            // if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+            if(POST.detail){showresult.show_result(POST.detail,response);}
 
+
+           
 
             //database.showuserinfor('ShengyanZhao');
      console.log('response end');

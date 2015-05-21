@@ -62,7 +62,6 @@ T.get('search/tweets', { q:myquery },function(err, data, response) {
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
-console.log(tweet.user);
 // var reg = / /;
 // var res = tweet.text.split(reg);   
 //console.log(tweet.user.screen_name);
@@ -72,18 +71,17 @@ userNames[indx]=tweet.user.name;
 userLocations[indx]=tweet.user.location;
 userDescription[indx]=tweet.user.description;
 userImage[indx]= tweet.user.profile_image_url;
-console.log(useratthere[indx]);
 }
 
 
-
-var html =
+var html = 
 '<!DOCTYPE html>'+
 '<html>'+
 '<head lang="en">'+
     '<meta charset="UTF-8">'+
     '<title>form</title>'+
 '</head>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
 
 '<body>'+
 '<h1>Result:</h1>'+
@@ -114,7 +112,7 @@ html+='<td>'+userLocations[j]+'</td>'
 
 html+='<td>'+userDescription[j]+'</td>'
 
-html+='<td>'+'<a href="http://localhost:3000/result">find tweets of this user'+'</td>'
+html+='<td>'+'<input  name = "detail" type="submit" value='+ useratthere[j] +'>'+'</td>'
 
 html+=
 '</tr>'
@@ -124,15 +122,22 @@ html+=
 
 html+=
 '</table>'+
-
+'</form>'+
 '</body>'+
 
 '</html>'
 
 
+
+
+
+
   
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
+
+
+
     res.end();
 
 
