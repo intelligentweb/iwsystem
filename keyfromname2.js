@@ -115,7 +115,7 @@ for (var index=0;index<res.length;index++) {
 for (var index=0;index<res.length;index++) {
 	// console.log(res[index]);
 
-if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
+if(res[index]!="yes"&&res[index]!="just"&&res[index]!="in"&&res[index]!="through"&&res[index]!="about"&&res[index]!="that"&&res[index]!="will"&&res[index]!="should"&&res[index]!="there"&&res[index]!="here"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
 // console.log("enter");
 if(personalkey[num].length == 0){
 
@@ -156,7 +156,7 @@ if(personalkey[num].length == 0){
 
 for (var index=0;index<res.length;index++) {
 
-if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
+if(res[index]!="yes"&&res[index]!="just"&&res[index]!="in"&&res[index]!="through"&&res[index]!="about"&&res[index]!="that"&&res[index]!="will"&&res[index]!="should"&&res[index]!="there"&&res[index]!="here"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
 
 if(totalkey.length == 0){
 
