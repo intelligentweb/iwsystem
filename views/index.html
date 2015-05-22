@@ -31,12 +31,19 @@
         	<div id="search">
             	<div id="search_left">specific topics:</div>
                 <div id="search_right">
-                <input id='search_text' name="keywords"/>
+                <!-- <input id='search_text' name="keywords"/> -->
+                <input id='search_text' type="text" name="keywords" value="input keywords(e.g. java mysql)" 
+                style="color#d3d7d4;" onfocus="if(value=='input keywords(e.g. java mysql)'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input keywords(e.g. java mysql)'}"/>
                 </div>
                 <div id="search_left">Location:</div>
                 <div id="search_right">
                 <input id='search_text' name="LatitudeandLongitude" type="text" value=""
                 style="color#d3d7d4;"/>
+                </div>
+                <div id="search_right">
+                    <div id="search_right_notice">
+                        (optional e.g. 51.5072,0.1275,10km)
+                    </div>
                 </div>
             </div>
             
@@ -54,7 +61,9 @@
         	<div id="search">
             	<div id="search_left">Screen_names :</div>
                 <div id="search_right">
-                <input id='search_text' name="Screen_name"type="text"/>
+                <!-- <input id='search_text' name="Screen_name"type="text"/> -->
+                <input id='search_text' type="text" name="Screen_name" value="input screen_names(e.g. Miffu123 spriggy45)" 
+                style="color#d3d7d4;" onfocus="if(value=='input screen_names(e.g. Miffu123 spriggy45)'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input screen_names(e.g. Miffu123 spriggy45)'}"/>
                 </div>
                 <div id="search_left">How many keywords:</div>
                 <div id="search_right">
@@ -97,7 +106,9 @@
         	<div id="search">
             	<div id="search_left">User:</div>
                 <div id="search_right">
-                <input id='search_text' name="User" type="text" />
+                <!-- <input id='search_text' name="User" type="text" /> -->
+                <input id='search_text' type="text" name="User" name="Screen_name" value="input screen_name(e.g. Miffu123)" 
+                style="color#d3d7d4;" onfocus="if(value=='input screen_name(e.g. Miffu123)'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input screen_name(e.g. Miffu123)'}"/>
                 </div>
                 <div id="search_left">Number of days:</div>
                 <div id="search_right">
@@ -128,7 +139,9 @@
         	<div id="search">
             	<div id="search_left">Location:</div>
                 <div id="search_right">
-                <input id='search_text' name="venueid" type="text" />
+                <!-- <input id='search_text' name="venueid" type="text" /> -->
+                <input id='search_text' type="text" name="venueid"  value="input venue name(e.g. Sheffield)" 
+                style="color#d3d7d4;" onfocus="if(value=='input venue name(e.g. Sheffield)'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input venue name(e.g. Sheffield)'}"/>
                 </div>
                 <div id="search_left">How many days:</div>
                 <div id="search_right">
@@ -158,7 +171,9 @@
             <div id="search">
                 <div id="search_left">Venue:</div>
                 <div id="search_right">
-                <input id='search_text' name="Venue" type="text" />
+                <!-- <input id='search_text' name="Venue" type="text" /> -->
+                <input id='search_text' type="text" name="venue"  value="input latitude longitude(e.g. 51.5072,0.1275)" 
+                style="color#d3d7d4;" onfocus="if(value=='input latitude longitude(e.g. 51.5072,0.1275)'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#ff00ff';value='input latitude longitude(e.g. 51.5072,0.1275)'}"/>
                 </div>
             </div>
         </div>
