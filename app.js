@@ -10,7 +10,7 @@ var ejs = require('ejs');
 var index = require('./routes/index');
 var result = require('./routes/result');
 var googlemap = require('./routes/showmap');
-
+var tfromkey= require('./tfromkey');
 var showresult = require('./userResult');
 var venuefromuser = require('./venuefromuser');
 var userfromvenue= require('./userfromvenue2');
