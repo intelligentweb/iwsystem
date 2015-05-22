@@ -45,7 +45,7 @@ console.log("There are  "+contact.response.venues.length+"  places nearby");
 
  	if(contact.response.venues[i].categories[0]){
 
-	console.log(contact.response.venues[i].categories[0].name);
+	console.log(contact.response.venues[i]);
 
   placesnearby[i] =   contact.response.venues[i].name;
   placescate[i] =   contact.response.venues[i].categories[0].name;

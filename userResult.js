@@ -164,10 +164,58 @@ html+=
 }
 
 
-function showonmap(res){
+function showonmap(ll,res){
+
+var request = require('request');
 
 // res.redirect('/result');
-console.log("enter  showmpa");
+console.log("showmap ll is "+ll);
+
+var placesnearby =  new Array();
+var placepos = new Array();
+
+var headers = {
+'User-Agent': 'Super Agent/0.0.1',
+'Content-Type': 'application/x-www-form-urlencoded'
+}
+// Configure the request
+var query = JSON.stringify(ll);
+
+
+var options = {
+//url: 'https://api.foursquare.com/v2/checkins/resolve',
+url: 'https://api.foursquare.com/v2/venues/search',
+method: 'GET',
+headers: headers,
+
+qs: {'ll': ll.toString(), 'intent':'checkin','oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+'v' :'20140806', m: 'swarm'}
+}
+
+
+
+request(options,function (error, response, body, getres) {
+if (!error && response.statusCode == 200) {
+// Print out the response body
+
+//console.log(body);
+var jsontext = body;  
+var contact = JSON.parse(jsontext);
+console.log("There are  "+contact.response.venues.length+"  places nearby");
+
+ for(var i =0; i<contact.response.venues.length; i++){
+
+  console.log(contact.response.venues[i]);
+  placesnearby[i] =   contact.response.venues[i].name;
+  var la = contact.response.venues[i].location.lat;
+  var lon = contact.response.venues[i].location.lng;
+  placepos[i] = la +','+lon;
+  console.log("@@@@"+ placepos[i]);
+}
+}
+
+
+
 
 var html =
 '<!DOCTYPE html>'+
@@ -186,20 +234,39 @@ var html =
 
  '<script type="text/javascript">'+
 
-  'function initialize() {'+
-  'var myLatlng = new google.maps.LatLng(53.38108855193859, -1.4801287651062012);'+
-  'var myLatlng1 = new google.maps.LatLng(53.28108855193859, -1.4801287651062012);'+
+  'function initialize() {'
+
+  
+for(var j=0;j<3;j++){
+   
+html+= 'var myLatlng'+j+' = new google.maps.LatLng('+placepos[j] +');'
+
+html+='var marker'+j+' = new google.maps.Marker({'+
+  'position: myLatlng'+j+','+
+  'map: map,'+
+  'title:"Here!!" });'
+
+}
+
+
+
+html+=
+
+  'var myLatlng = new google.maps.LatLng('+ll +');'+
+ 
+  'var marker = new google.maps.Marker({'+
+  'position: myLatlng,'+
+  'map: map,'+
+  'title:"Here!!" });'+
+  
+  
 
  'var mapOptions = {'+
  'zoom: 18,'+
- 'center: myLatlng }'+
+ 'center: myLatlng };'+
  'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
 
- 'var marker = new google.maps.Marker({'+
- 'position: myLatlng,'+
- 'map: map,'+
- 'title:"Here!!" });'+
-
+ 
  'var infowindow = new google.maps.InfoWindow({'+
  'content: '+'\''+'Yes'+'\''+','+
  'maxWidth:200 });'+
@@ -222,10 +289,57 @@ html+=
 '<div><p>I work at the Department of Computer Science</p></div>'+
 '</body>'
       
-      console.log(html);
+     console.log(html);
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
       res.end();
+
+
+
+
+
+
+
+
+})  // callback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

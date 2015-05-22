@@ -152,10 +152,10 @@ console.log(POST.User);
             if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
         // if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
-       // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
+            if(POST.fifth){venuefromvenue.venue_from_venue(POST.Venue,response)}
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
-            if(POST.latandlon){showresult.showonmap(response);}
+            if(POST.latandlon){showresult.showonmap(POST.latandlon,response);}
 
            
 
