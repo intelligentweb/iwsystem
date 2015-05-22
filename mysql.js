@@ -5,9 +5,9 @@ var connection = mysql.createConnection(
     {
       host     : 'stusql.dcs.shef.ac.uk',
       port     : '3306',
-      user     : 'acp14sz',
-      password : '75c417e0',
-      database : 'acp14sz'
+      user     : 'acr14lc',
+      password : '528128f4',
+      database : 'acr14lc'
     }
 );
 connection.connect();
@@ -34,9 +34,9 @@ var query = connection.query(insertSQL);
 // });
  }
 
-function add_venue_inform(venue_id,venue_name){
+function add_venue_inform(venue_name,screen_name){
 
-var insertSQL = 'insert into venues values("'+venue_id+'","'+venue_name+'")';
+var insertSQL = 'insert into Venue values("'+venue_name+'","'+screen_name+'")';
 var query = connection.query(insertSQL);
 
 

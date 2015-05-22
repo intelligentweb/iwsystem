@@ -2,7 +2,7 @@
 
 function user_from_venue(venuename,days,res){
 var Twit = require('twit')
-
+var re=require('./mysql.js');
 var T = new Twit({
     consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
   , consumer_secret:      'smC1FdIpWDclsGhZQiaCecXoNlHcOut0CnYaLTlCVBXt8eoCZw'
@@ -74,7 +74,10 @@ userNames[indx]=tweet.user.name;
 userLocations[indx]=tweet.user.location;
 userDescription[indx]=tweet.user.description;
 userImage[indx]= tweet.user.profile_image_url;
+re.add_venue_inform(tweet.user.screen_name,venuename);
 }
+
+
 
 
 var html = 
