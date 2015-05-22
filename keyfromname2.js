@@ -34,7 +34,7 @@ for(i=0;i<=names.length;i++)
 var totalkey = new Array();
 var totalnumberofkey = new Array();
 var deleteKey = new Array();
-// var showName = new A
+var showName = new Array();
 
 
 var num = 0;
@@ -105,6 +105,7 @@ console.log("enter");
  for (var indx in data.statuses) {
 
 var tweet= data.statuses[indx];
+showName[num] = tweet.user.screen_name;
 var reg = / /;
 var res = tweet.text.split(reg);   
 // console.log(res);
@@ -309,7 +310,7 @@ for(var j=0;j<names.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+names[j]+'</td>'
+html+='<td>'+showName[j]+'</td>'
 
 for(var i = 0;i<keynumber;i++){
 
