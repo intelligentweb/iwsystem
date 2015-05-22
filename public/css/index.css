@@ -45,7 +45,7 @@ body{
 #wrapper_left{
 	margin:0 auto;
 	width:650px;
-	height:580px;
+	/*height:580px;*/
 }
 
 	
@@ -85,16 +85,16 @@ body{
 	}
 #search_left{
 	width: 200px;
-	height: 40px;
+	height: 33px;
 	text-align:right;
 	font-size:18px;
 	color:white;
-	line-height:40px;
+	line-height:33px;
 	float:left;
 	}
 #search_right{
 	width: 290px;
-	height: 40px;
+	height: 33px;
 	margin-left:10px;
 	float:left;
 	}
