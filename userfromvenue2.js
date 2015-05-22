@@ -78,13 +78,14 @@ userLocations[indx]=tweet.user.location;
 userDescription[indx]=tweet.user.description;
 userImage[indx]= tweet.user.profile_image_url;
 re.add_venue_inform(venuename,useratthere[indx]);
-//re.add_user_inform(useratthere[indx],userID[indx],userLocations[indx],userImage[indx],userDescription[indx],venuename,"kk")
-
+re.add_user_inform(useratthere[indx],userID[indx],userLocations[indx],userImage[indx],userDescription[indx],venuename,"jj")
+//(screen_name,twit_id,location,profile,description,visit_venue,retwit_user)
 
 }
 
+//re.add_user_inform("snam","tid","beijing","http://jjj","hssjjsjsa dasdasd mkmkda","shef","clt");
 console.log("I am thererererer");
-re.add_user_inform("snam","tid","beijing","http://jjj","hssjjsjsa dasdasd mkmkda","shef","clt");
+
 
 
 var html = 

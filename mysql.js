@@ -17,7 +17,7 @@ console.log('Database has connected');
 
 function add_user_inform(screen_name,twit_id,location,profile,description,visit_venue,retwit_user){
 
-var insertSQL = 'insert into users values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'","'+visit_venue+'",,"'+retwit_user+'")';
+var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'","'+visit_venue+'","'+retwit_user+'")';
 var query = connection.query(insertSQL);
 
 
