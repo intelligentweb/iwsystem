@@ -13,7 +13,33 @@ var connection = mysql.createConnection(
 connection.connect();
 console.log('Database has connected');
 
+function check_and_insert(screen_name,twit_id,location,profile,description,visit_venue,retwit_user){
+var has = 0;
+var selectSQL = 'select screen_name from User';
+var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'","'+visit_venue+'","'+retwit_user+'")';
 
+connection.query(selectSQL, function (err2, rows) {
+	
+
+    if (err2) console.log(err2);
+    console.log("SELECT ==> ");
+    for (var i in rows) {
+        // console.log(rows[i].screen_name);
+
+	if(rows[i].screen_name == screen_name){
+		has = 1;
+	}
+    }
+
+
+if(has==0){
+	var query = connection.query(insertSQL);
+}
+
+
+});
+
+}
 
 function add_user_inform(screen_name,twit_id,location,profile,description,visit_venue,retwit_user){
 
@@ -89,3 +115,4 @@ exports.add_user_tweet=add_user_tweet;
 exports.add_user_visit_venue=add_user_visit_venue;
 exports.showuserinfor=showuserinfor;
 exports.showvenueinfor=showvenueinfor;
+exports.check_and_insert=check_and_insert;

@@ -2,9 +2,11 @@
 
 function tweet_from_key(key,Location,res){
 
-console.log(key);
+// console.log(key);
 
 var Twit = require('twit')
+var re=require('./mysql.js');
+
 var T = new Twit({
     consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
   , consumer_secret:      'smC1FdIpWDclsGhZQiaCecXoNlHcOut0CnYaLTlCVBXt8eoCZw'
@@ -42,26 +44,39 @@ var tweetID = new Array();
 var IDstr = new Array();
 var peopleretweet = new Array(); 
 var retweetCount = new Array();
+var inserted = new Array();
 
 
 
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
-
+var has = 0;
 // date[indx]=tweet.created_at;
+// console.log(data.statuses[indx]);
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
 tweetID[indx]=tweet.id;
 IDstr[indx]=tweet.id_str.toString();
 retweetCount[indx]=tweet.retweet_count;
+console.log(has);
+for (var num in inserted) {
+    console.log("insert");
+if(inserted[num]==tweet.user.screen_name){
+  has = 1;
+}
+}
+if(has == 0){
 
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+inserted.push(tweet.user.screen_name);
+}
 var ge = / /;
 var dateres = tweet.created_at.split(ge); 
 
 date[indx] = dateres[0]+" "+dateres[1]+" "+dateres[2]+" "+dateres[5];
 }
- console.log(data.statuses[0]);
+ // console.log(data.statuses[0]);
 
 
 var html =
