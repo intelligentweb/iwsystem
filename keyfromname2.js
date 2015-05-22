@@ -34,6 +34,7 @@ for(i=0;i<=names.length;i++)
 var totalkey = new Array();
 var totalnumberofkey = new Array();
 var deleteKey = new Array();
+// var showName = new A
 
 
 var num = 0;
