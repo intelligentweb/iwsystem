@@ -9,7 +9,8 @@ var ejs = require('ejs');
 
 var index = require('./routes/index');
 var result = require('./routes/result');
-var tfromkey = require('./tfromkey');
+var googlemap = require('./routes/showmap');
+
 var showresult = require('./userResult');
 var venuefromuser = require('./venuefromuser');
 var userfromvenue= require('./userfromvenue2');
@@ -37,14 +38,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-//app.use('/tfromkey', tfromkey);
-// app.use('/result', result);
+app.use('/googlemaptest', googlemap);
+app.use('/result', result);
 
-app.get('/result',function (req,res) {
 
-res.send('about requested');
-
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -76,6 +73,13 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+app.listen(8200,function(){
+    console.log("Server Start!");
+});
+
+
 
 
 
@@ -118,9 +122,6 @@ app.use(function(err, req, res, next) {
 
 
 
-app.listen(8200,function(){
-    console.log("Server Start!");
-});
 
 var server = http.createServer(function (request, response) {
     if (request.method == 'POST') {
@@ -150,11 +151,11 @@ console.log(POST.User);
             
             if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
-           //  if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
-           // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
+        // if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+       // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
-
+            if(POST.latandlon){showresult.showonmap(response);}
 
            
 
@@ -165,7 +166,11 @@ console.log(POST.User);
     }
     
 });
-
-
 server.listen(3000);
+
+
+
+
+
+
 module.exports = app;

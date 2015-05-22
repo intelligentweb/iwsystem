@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('result', { title: 'Express' });
+  res.render('googlemaptest', { title: 'Express' });
 });
 
 module.exports = router;

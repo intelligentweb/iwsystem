@@ -163,5 +163,80 @@ html+=
 
 }
 
+
+function showonmap(res){
+
+// res.redirect('/result');
+console.log("enter  showmpa");
+
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head>'+
+'<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>'+
+'<style type="text/css">'+
+'html { height: 100% }'+
+'body { height: 100%; margin: 0; padding: 0 }'+
+'#map-canvas { height: 100% }'+
+'</style>'+
+ '<title>Where I work</title>'+
+ '<script type="text/javascript"'+
+ 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_BbMxx-ILdm9CFhwVs6_qDr3qr9_qpMQ&sensor=false">'+
+ '</script>'+
+
+ '<script type="text/javascript">'+
+
+  'function initialize() {'+
+  'var myLatlng = new google.maps.LatLng(53.38108855193859, -1.4801287651062012);'+
+  'var myLatlng1 = new google.maps.LatLng(53.28108855193859, -1.4801287651062012);'+
+ 'var mapOptions = {'+
+ 'zoom: 18,'+
+ 'center: myLatlng }'+
+ 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
+
+ 'var marker = new google.maps.Marker({'+
+ 'position: myLatlng,'+
+ 'map: map,'+
+ 'title:"Here!!" });'+
+
+ 'var infowindow = new google.maps.InfoWindow({'+
+ 'content: '+'Yes'+','+
+ 'maxWidth:200 });'+
+
+
+
+'infowindow.open(map,marker);'+
+ 'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
+ 'infowindow.open(map, marker); });'+
+ '}'+
+ 'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
+ '</script>'
+
+
+
+
+html+=
+'</table>'+
+'</form>'+
+'</body>'+
+
+'</html>'
+
+      res.writeHead(200,{"Content-Type":"text/html"});
+      res.write(html);
+      res.end();
+
+}
+
+
+
+
+
+
+
+
+
+
 exports.show_retweet=show_retweet;
 exports.show_result=show_result;
+exports.showonmap=showonmap;

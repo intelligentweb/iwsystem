@@ -66,7 +66,8 @@ T.get('search/tweets', { q:myquery ,count: 50 }, function(err, data, response,ge
 var shortids = new Array();
 var places = new Array();
 var lat = new Array();
-var lont = new Array();
+var lng = new Array();
+var ll = new Array();
 
 for (var indx in data.statuses) {
 var reg = 'https://www.swarmapp.com/c/'; 
@@ -111,8 +112,8 @@ var jsontext = body;
 var contact = JSON.parse(jsontext);
 places[count]=contact.response.checkin.venue.name;
 lat[count] = contact.response.checkin.venue.location.lat;
-lont[count] = contact.response.checkin.venue.location.lng;
-
+lng[count] = contact.response.checkin.venue.location.lng;
+ll[count] = contact.response.checkin.venue.location;
 console.log(contact.response.checkin.venue.location);
 // console.log('i2='+i);
  // console.log(places);
@@ -136,6 +137,7 @@ var html =
 '</head>'+
 
 '<body>'+
+'<form acton ="http://localhost:8200/" method="POST" >'+
 '<h1>Result:</h1>'+
 '<h1>User:'+screen_name+'</h1>'+
 '<table border="1">'+
@@ -148,15 +150,16 @@ for(var j=0;j<places.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+places[j]+'</td>'
+html+='<td>'+places[j]+'</td>'   
 
-html+=
+html+='<td><button name="latandlon" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
+
 '</tr>'
 
 }
 html+=
 '</table>'+
-
+'</form>'+
 '</body>'+
 
 '</html>'
