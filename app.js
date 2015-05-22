@@ -140,10 +140,15 @@ var server = http.createServer(function (request, response) {
         request.on('end', function () {
 
             var POST = querystring.parse(body);
+
+            console.log(POST.select2a);
+                        console.log(POST.select2b);
+                                    console.log(POST.select3);
+                                                console.log(POST.select4);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
-            if(POST.second){keyfromname.key_from_name(POST.Screen_name,3,20,response);}
-            if(POST.third){ venuefromuser.venue_from_user(POST.User,2,response);}
-            if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
+            if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
+            if(POST.third){ venuefromuser.venue_from_user(POST.User,POST.select3,response);}
+            if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
           //  if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
            // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
             if(POST.detail){showresult.show_result(POST.detail,response);}
