@@ -20,8 +20,8 @@ function getres(res){
 
 var num = 0;
 
-console.log('location:'+Location);
-console.log('key:'+key);
+// console.log('location:'+Location);
+// console.log('key:'+key);
 
 if(key==''&& Location=='' ){
             res.writeHead(200, {"Content-Type": "text/plain"});
@@ -34,7 +34,7 @@ T.get('search/tweets', { q: key,geocode:Location,count: 50 },
 function(err, data,response, getres) {
 
 
-console.log('enter t.get  callback');
+// console.log('enter t.get  callback');
 var date = new Array();
 var who = new Array();
 var content = new Array();
@@ -47,11 +47,16 @@ var peopleretweet = new Array();
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
-date[indx]=tweet.created_at;
+// date[indx]=tweet.created_at;
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
 tweetID[indx]=tweet.id;
 IDstr[indx]=tweet.id_str.toString();
+
+var ge = / /;
+var dateres = tweet.created_at.split(ge); 
+
+date[indx] = dateres[0]+" "+dateres[1]+" "+dateres[2]+" "+dateres[5];
 }
  
 

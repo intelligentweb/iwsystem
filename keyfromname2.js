@@ -263,8 +263,8 @@ for(var i=0;i<deleteKey.length;i++){
 
 }
 
-console.log(personalkey[0]);    
-console.log(personalkey[1]); 
+// console.log(personalkey[0]);    
+// console.log(personalkey[1]); 
 // console.log(totalkey);          
 
 
