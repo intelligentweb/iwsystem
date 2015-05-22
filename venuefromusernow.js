@@ -51,8 +51,6 @@ foursquare.getVenues(opts).pipe(...) // pipe that stream, dog!
 
 
 
-
-
 }
 })
 
