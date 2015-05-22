@@ -77,11 +77,14 @@ userNames[indx]=tweet.user.name;
 userLocations[indx]=tweet.user.location;
 userDescription[indx]=tweet.user.description;
 userImage[indx]= tweet.user.profile_image_url;
+re.add_venue_inform(venuename,useratthere[indx]);
+//re.add_user_inform(useratthere[indx],userID[indx],userLocations[indx],userImage[indx],userDescription[indx],venuename,"kk")
+
 
 }
 
 console.log("I am thererererer");
-re.add_venue_inform("Shanghai","wei");
+re.add_user_inform("snam","tid","beijing","http://jjj","hssjjsjsa dasdasd mkmkda","shef","clt");
 
 
 var html = 
