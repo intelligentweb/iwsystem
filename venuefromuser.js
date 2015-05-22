@@ -65,6 +65,8 @@ T.get('search/tweets', { q:myquery ,count: 50 }, function(err, data, response,ge
   
 var shortids = new Array();
 var places = new Array();
+var lat = new Array();
+var lont = new Array();
 
 for (var indx in data.statuses) {
 var reg = 'https://www.swarmapp.com/c/'; 
@@ -108,7 +110,10 @@ if (!error && response.statusCode == 200) {
 var jsontext = body;  
 var contact = JSON.parse(jsontext);
 places[count]=contact.response.checkin.venue.name;
-// console.log(contact.response.checkin.venue.name);
+lat[count] = contact.response.checkin.venue.location.lat;
+lont[count] = contact.response.checkin.venue.location.lng;
+
+console.log(contact.response.checkin.venue.location);
 // console.log('i2='+i);
  // console.log(places);
 // console.log('count='+count);
