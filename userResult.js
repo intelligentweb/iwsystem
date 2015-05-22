@@ -189,6 +189,7 @@ var html =
   'function initialize() {'+
   'var myLatlng = new google.maps.LatLng(53.38108855193859, -1.4801287651062012);'+
   'var myLatlng1 = new google.maps.LatLng(53.28108855193859, -1.4801287651062012);'+
+
  'var mapOptions = {'+
  'zoom: 18,'+
  'center: myLatlng }'+
@@ -200,7 +201,7 @@ var html =
  'title:"Here!!" });'+
 
  'var infowindow = new google.maps.InfoWindow({'+
- 'content: '+'Yes'+','+
+ 'content: '+'\''+'Yes'+'\''+','+
  'maxWidth:200 });'+
 
 
@@ -211,8 +212,6 @@ var html =
  '}'+
  'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
  '</script>'
-
-
 
 
 html+=
