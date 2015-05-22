@@ -48,20 +48,20 @@ var retweetCount = new Array();
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
-console.log(data.statuses[indx]);
+
 // date[indx]=tweet.created_at;
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
 tweetID[indx]=tweet.id;
 IDstr[indx]=tweet.id_str.toString();
-retweetCount[indx]=tweet.retweeted;
+retweetCount[indx]=tweet.retweet_count;
 
 var ge = / /;
 var dateres = tweet.created_at.split(ge); 
 
 date[indx] = dateres[0]+" "+dateres[1]+" "+dateres[2]+" "+dateres[5];
 }
- 
+ console.log(data.statuses[0]);
 
 
 var html =
@@ -82,7 +82,7 @@ var html =
 '<th>Date</th>'+
 '<th>Who</th>'+
 '<th>Content</th>'+
-'<th>Have Retweet?</th>'+
+'<th>Retweet Count</th>'+
 '<th>Retweet</th>'+
 '</tr>'
 
