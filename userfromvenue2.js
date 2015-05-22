@@ -79,7 +79,7 @@ userImage[indx]= tweet.user.profile_image_url;
 }
 
 console.log("I am thererererer");
-re.add_venue_inform("beijing","wei");
+re.add_venue_inform("Shanghai","wei");
 
 
 var html = 
