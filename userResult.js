@@ -236,35 +236,42 @@ var html =
 
   'function initialize() {'
 
-  
-for(var j=0;j<3;j++){
+html+='var myLatlng = new google.maps.LatLng('+ll +');'
+
+for(var j=0;j<placepos.length;j++){
    
 html+= 'var myLatlng'+j+' = new google.maps.LatLng('+placepos[j] +');'
 
+// html+='var marker'+j+' = new google.maps.Marker({'+
+//   'position: myLatlng'+j+','+
+//   'map: map,'+
+//   'title:"Here!!" });'
+
+}
+
+html += 'var mapOptions = {'+
+ 'zoom: 18,'+
+ 'center: myLatlng };'+
+ 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'
+
+
+html+=  'var marker = new google.maps.Marker({'+
+  'position: myLatlng,'+
+  'map: map,'+
+  'title:"Here!!" });'
+
+for(var j=0;j<placepos.length;j++){
 html+='var marker'+j+' = new google.maps.Marker({'+
   'position: myLatlng'+j+','+
   'map: map,'+
   'title:"Here!!" });'
 
 }
-
-
-
 html+=
-
-  'var myLatlng = new google.maps.LatLng('+ll +');'+
- 
-  'var marker = new google.maps.Marker({'+
-  'position: myLatlng,'+
-  'map: map,'+
-  'title:"Here!!" });'+
-  
-  
-
- 'var mapOptions = {'+
- 'zoom: 18,'+
- 'center: myLatlng };'+
- 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
+ // 'var mapOptions = {'+
+ // 'zoom: 18,'+
+ // 'center: myLatlng };'+
+ // 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
 
  
  'var infowindow = new google.maps.InfoWindow({'+
@@ -296,60 +303,10 @@ html+=
 
 
 
-
-
-
-
-
 })  // callback
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
 
 
 exports.show_retweet=show_retweet;
