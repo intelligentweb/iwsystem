@@ -112,9 +112,6 @@ app.use(function(err, req, res, next) {
 //             if(POST.second){keyfromname.key_from_name(POST.Screen_name,10,10,response);}
 //             if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
 //             if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,20,response); }
-
-
-  
 // });
 
 
@@ -124,7 +121,6 @@ app.use(function(err, req, res, next) {
 app.listen(8200,function(){
     console.log("Server Start!");
 });
-
 
 var server = http.createServer(function (request, response) {
     if (request.method == 'POST') {
@@ -148,8 +144,11 @@ var server = http.createServer(function (request, response) {
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
             if(POST.third){ venuefromuser.venue_from_user(POST.User,POST.select3,response);}
-            if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
-          //  if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+
+            
+            if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+            if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
+           //  if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
            // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
