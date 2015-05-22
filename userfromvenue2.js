@@ -19,6 +19,7 @@ var userNames = new Array();
 var userLocations = new Array();
 var userDescription = new Array();
 var userImage = new Array();
+var userID = new Array();
 
 //choose time*****************************************************************************************************************
 var day = days;
@@ -69,7 +70,8 @@ var tweet= data.statuses[indx];
 // var reg = / /;
 // var res = tweet.text.split(reg);   
 //console.log(tweet.user.screen_name);
-
+userID[indx] = tweet.user.id;
+console.log(userID);
 useratthere[indx]=tweet.user.screen_name;
 userNames[indx]=tweet.user.name;
 userLocations[indx]=tweet.user.location;
