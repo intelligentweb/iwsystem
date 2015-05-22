@@ -143,7 +143,9 @@ var server = http.createServer(function (request, response) {
                                                 console.log(POST.select4);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
-            if(POST.third){ venuefromuser.venue_from_user(POST.User,POST.select3,response);}
+            if(POST.third){ 
+console.log(POST.User);
+              venuefromuser.venue_from_user(POST.User,POST.select3,response);}
 
             
             if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }

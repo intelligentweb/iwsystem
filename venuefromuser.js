@@ -17,6 +17,8 @@ function getres(res){
   return res;
 }
 
+console.log(screen_name);
+
 //choose time*****************************************************************************************************************
 var day = days;
 var searchDay = 'since:';
