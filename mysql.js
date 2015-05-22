@@ -78,7 +78,7 @@ var query = connection.query(showSQL);
 }
 
 
-connection.end();
+// connection.end();
 //}
 
 exports.add_user_inform=add_user_inform;
