@@ -41,17 +41,20 @@ var content = new Array();
 var tweetID = new Array();
 var IDstr = new Array();
 var peopleretweet = new Array(); 
+var retweetCount = new Array();
 
 
 
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
+console.log(data.statuses[indx]);
 // date[indx]=tweet.created_at;
 who[indx]=tweet.user.screen_name;
 content[indx]=tweet.text;
 tweetID[indx]=tweet.id;
 IDstr[indx]=tweet.id_str.toString();
+retweetCount[indx]=tweet.retweeted;
 
 var ge = / /;
 var dateres = tweet.created_at.split(ge); 
@@ -79,6 +82,7 @@ var html =
 '<th>Date</th>'+
 '<th>Who</th>'+
 '<th>Content</th>'+
+'<th>Have Retweet?</th>'+
 '<th>Retweet</th>'+
 '</tr>'
 
@@ -86,7 +90,7 @@ for(var j=0;j<who.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'
+html+='<td>'+date[j]+'</td>'+'<td>'+who[j]+'</td>'+'<td>'+content[j]+'</td>'+'<td>'+retweetCount[j]+'</td>'
 html+='<td><button name="redetail" type="submit" value='+IDstr[j]+'>'+'Click'+'</button></td>'
 // +'<input  name = "redetail" type="submit" value='+ IDstr[j] +'>'+
 html+=
