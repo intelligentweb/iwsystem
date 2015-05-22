@@ -38,14 +38,17 @@ if(time.getDate()>days){
             searchDay +=time.getMonth();
             searchDay += '-';
             var lastMonth = time.getMonth();
-            switch (lastMonth){
-            case 1,3,5,7,8,10,11: searchDay += time.getDate()+31-days;
-            break;
-            case 2: searchDay += time.getDate()+28-days;
-            break;
-            case 4,6,9,12: searchDay += time.getDate()+30-days;
-            break;
+
+            if(lastMonth == 1||lastMonth == 3||lastMonth == 5||lastMonth == 7||lastMonth == 8||lastMonth == 10||lastMonth == 12){
+                searchDay += (time.getDate()+31-days);
             }
+            if(lastMonth == 2 ){
+                searchDay += (time.getDate()+28-days);
+            }
+            if(lastMonth == 4||lastMonth == 6||lastMonth == 9||lastMonth == 11){
+                searchDay += (time.getDate()+30-days);
+            }
+
         }else{
             searchDay = time.getFullYear()-1+"-"+12+time.getDate()+31-days;
         }    

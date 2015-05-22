@@ -17,13 +17,49 @@ function getres(res){
   return res;
 }
 
+//choose time*****************************************************************************************************************
+var day = days;
+var searchDay = 'since:';
+// since:2010-12-27
+var time = new Date();
+searchDay += time.getFullYear();
+searchDay += '-';
+if(time.getDate()>days){
+    console.log(">>>>>");
+    console.log(time);
+    searchDay +=time.getMonth()+1;
+    searchDay += '-';
+    searchDay += time.getDate()-days;
+}else{
+        console.log("<<<<<");
+        if(time.getMonth()!=1){
+            searchDay +=time.getMonth();
+            searchDay += '-';
+            var lastMonth = time.getMonth();
+
+            if(lastMonth == 1||lastMonth == 3||lastMonth == 5||lastMonth == 7||lastMonth == 8||lastMonth == 10||lastMonth == 12){
+                searchDay += (time.getDate()+31-days);
+            }
+            if(lastMonth == 2 ){
+                searchDay += (time.getDate()+28-days);
+            }
+            if(lastMonth == 4||lastMonth == 6||lastMonth == 9||lastMonth == 11){
+                searchDay += (time.getDate()+30-days);
+            }
+
+        }else{
+            searchDay = time.getFullYear()-1+"-"+12+time.getDate()+31-days;
+        }    
+}
+//****************************************************************************************************************************
 
 // var screen_name='Bryankorourke';
 
 var quary='swarmapp/c/ from:';
-
+var myquery = quary+screen_name+' '+searchDay
+console.log(myquery);
 //T.get('search/tweets', { q:'swarmapp/c/ from:stevewoz' ,count: 5 }, function(err, data, response,getres) {
-T.get('search/tweets', { q:quary+screen_name ,count: 50 }, function(err, data, response,getres) {
+T.get('search/tweets', { q:myquery ,count: 50 }, function(err, data, response,getres) {
   
 var shortids = new Array();
 var places = new Array();
@@ -34,7 +70,7 @@ var s1 = JSON.stringify(data.statuses[indx].entities.urls);
  var s2 = s1.split(reg);
  var s3 =s2[1].split(/"/);
   shortids[indx]=s3[0];
-  console.log(shortids[indx]);
+ // console.log(shortids[indx]);
 }
 
 
@@ -76,7 +112,7 @@ places[count]=contact.response.checkin.venue.name;
 // console.log('count='+count);
 count++;
 }
- console.log(count);
+ //console.log(count);
 // console.log('i='+i);
 
 

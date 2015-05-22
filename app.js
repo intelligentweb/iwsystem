@@ -142,10 +142,10 @@ var server = http.createServer(function (request, response) {
             var POST = querystring.parse(body);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,3,20,response);}
-            if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
-          //  if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
+            if(POST.third){ venuefromuser.venue_from_user(POST.User,2,response);}
+            if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,5,response); }
           //  if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
-            if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
+           // if(POST.fourth){venuefromvenue.venue_from_venue(POST.venueid,response)}
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
 
