@@ -41,7 +41,7 @@ var contact = JSON.parse(jsontext);
 var result = contact.response.venue.hereNow;
 
 var s1 = JSON.stringify(result); 
-console.log(s1);
+// console.log(s1);
 
 var html =
 '<!DOCTYPE html>'+

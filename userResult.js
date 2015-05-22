@@ -216,12 +216,14 @@ var html =
 
 
 html+=
-'</table>'+
-'</form>'+
-'</body>'+
-
-'</html>'
-
+'</head>'+
+'<body>'+
+'<h1>Where I work</h1>'+
+'<div id="map-canvas" style="background-color:#FFD700;width:50%;height:300pt;align:center;"/>'+
+'<div><p>I work at the Department of Computer Science</p></div>'+
+'</body>'
+      
+      console.log(html);
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
       res.end();
