@@ -81,35 +81,42 @@ if(time.getDate()>days){
 
 for(var count = 0;count<names.length;count++){
 
+
+//function sleep(milliSeconds) { 
+//     var startTime = new Date().getTime(); 
+//     while (new Date().getTime() < startTime + milliSeconds);
+//  };
+//  sleep(600); 
+
 var myquery = '\''+'from:'+names[namecount]+' '+searchDay+'\''; 
 //var myquery = '\''+' '+searchDay+'\''; 
 
 // console.log(names[namecount]);
-// console.log(myquery);
+console.log(myquery);
 // T.get('statuses/user_timeline', { screen_name :names[namecount] }, function(err, data, response) {
 T.get('search/tweets', { q: myquery },function(err, data, response) {
 
-
-
+// console.log(names[num]);
 // console.log("now number is : "+num );
 // console.log(myquery);
+console.log("enter");
 
  for (var indx in data.statuses) {
 
 var tweet= data.statuses[indx];
 var reg = / /;
 var res = tweet.text.split(reg);   
-console.log(res);
-console.log("************************************");
+// console.log(res);
+// console.log("************************************");
 for (var index=0;index<res.length;index++) {
 	res[index] = res[index].toLowerCase();
 }
 
 for (var index=0;index<res.length;index++) {
-	console.log(res[index]);
+	// console.log(res[index]);
 
 if(res[index]!="yes"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
-console.log("enter");
+// console.log("enter");
 if(personalkey[num].length == 0){
 
 	// console.log("now is using: "+num);
@@ -205,15 +212,16 @@ if(totalkey.length == 0){
         }  
     }  
 // }
-
+console.log("over: "+num);
+console.log(personalkey[num]);   
 num+=1;
 
 if(num==names.length)
 {
 
 // console.log("total key");
- console.log(totalkey);
- console.log(totalnumberofkey);
+ // console.log(totalkey);
+ // console.log(totalnumberofkey);
 
 for(var i=0;i<totalkey.length;i++){  
 
@@ -257,7 +265,7 @@ for(var i=0;i<deleteKey.length;i++){
 
 console.log(personalkey[0]);    
 console.log(personalkey[1]); 
-console.log(totalkey);          
+// console.log(totalkey);          
 
 
 // console.log("total key");
@@ -363,5 +371,9 @@ namecount+=1;
 }
 
 }
+
+
+
+
 
  exports.key_from_name=key_from_name;
