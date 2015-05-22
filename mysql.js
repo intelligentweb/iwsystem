@@ -22,12 +22,13 @@ connection.query(selectSQL, function (err2, rows) {
 	
 
     if (err2) console.log(err2);
-    console.log("SELECT ==> ");
+    // console.log("SELECT ==> ");
     for (var i in rows) {
         // console.log(rows[i].screen_name);
 
 	if(rows[i].screen_name == screen_name){
 		has = 1;
+		// console.log("repeat");
 	}
     }
 

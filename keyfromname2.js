@@ -2,6 +2,7 @@
  function key_from_name(namelist,keynumber,days,resp){
 
 var Twit = require('twit')
+var re=require('./mysql.js');
 
 var T = new Twit({
     consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
@@ -100,11 +101,15 @@ T.get('search/tweets', { q: myquery },function(err, data, response) {
 // console.log(names[num]);
 // console.log("now number is : "+num );
 // console.log(myquery);
-console.log("enter");
+// console.log("enter");
 
  for (var indx in data.statuses) {
 
 var tweet= data.statuses[indx];
+
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+
+
 showName[num] = tweet.user.screen_name;
 var reg = / /;
 var res = tweet.text.split(reg);   
@@ -214,8 +219,8 @@ if(totalkey.length == 0){
         }  
     }  
 // }
-console.log("over: "+num);
-console.log(personalkey[num]);   
+// console.log("over: "+num);
+// console.log(personalkey[num]);   
 num+=1;
 
 if(num==names.length)

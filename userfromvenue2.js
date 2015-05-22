@@ -20,6 +20,7 @@ var userLocations = new Array();
 var userDescription = new Array();
 var userImage = new Array();
 var userID = new Array();
+var inserted = new Array();
 
 //choose time*****************************************************************************************************************
 var day = days;
@@ -67,6 +68,7 @@ T.get('search/tweets', { q:myquery },function(err, data, response) {
 
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
+var has = 0;
 // var reg = / /;
 // var res = tweet.text.split(reg);   
 //console.log(tweet.user.screen_name);
@@ -77,8 +79,19 @@ userNames[indx]=tweet.user.name;
 userLocations[indx]=tweet.user.location;
 userDescription[indx]=tweet.user.description;
 userImage[indx]= tweet.user.profile_image_url;
-re.add_venue_inform(venuename,useratthere[indx]);
-re.add_user_inform(useratthere[indx],userID[indx],userLocations[indx],userImage[indx],userDescription[indx],venuename,"jj")
+
+
+for (var num in inserted) {
+    console.log("insert");
+if(inserted[num]==tweet.user.screen_name){
+  has = 1;
+}
+}
+if(has == 0){
+
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+inserted.push(tweet.user.screen_name);
+}
 //(screen_name,twit_id,location,profile,description,visit_venue,retwit_user)
 
 }
