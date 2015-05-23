@@ -125,48 +125,79 @@
 
 // // })
 
-var mysql = require('mysql');
-var connection = mysql.createConnection(
-    {
-      host     : 'stusql.dcs.shef.ac.uk',
-      port     : '3306',
-      user     : 'acr14lc',
-      password : '528128f4',
-      database : 'acr14lc'
-    }
-);
+// var mysql = require('mysql');
+// var connection = mysql.createConnection(
+//     {
+//       host     : 'stusql.dcs.shef.ac.uk',
+//       port     : '3306',
+//       user     : 'acr14lc',
+//       password : '528128f4',
+//       database : 'acr14lc'
+//     }
+// );
 
-connection.connect();
-console.log('Database has connected');
+// connection.connect();
+// console.log('Database has connected');
 
-var username='aaaaaa';
+// var username='aaaaaa';
 
-var has = 0;
-var selectSQL = 'select screen_name from User';
-var insertSQL = 'insert into User values("'+'screen_name'+'","'+'twit_id'+'","'+'location'+'","'+'profile'+'","'+'description'+'","'+'visit_venue'+'","'+'retwit_user'+'")';
+// var has = 0;
+// var selectSQL = 'select screen_name from User';
+// var insertSQL = 'insert into User values("'+'screen_name'+'","'+'twit_id'+'","'+'location'+'","'+'profile'+'","'+'description'+'","'+'visit_venue'+'","'+'retwit_user'+'")';
 
-// connection.query(selectSQL, function (err2, rows) {
+// // connection.query(selectSQL, function (err2, rows) {
 	
 
-//     if (err2) console.log(err2);
-//     console.log("SELECT ==> ");
-//     for (var i in rows) {
-//         console.log(rows[i].screen_name);
+// //     if (err2) console.log(err2);
+// //     console.log("SELECT ==> ");
+// //     for (var i in rows) {
+// //         console.log(rows[i].screen_name);
 
-// 	if(rows[i].screen_name == username){
-// 		has = 1;
-// 	}
-//     }
+// // 	if(rows[i].screen_name == username){
+// // 		has = 1;
+// // 	}
+// //     }
 
-// console.log(has);
-// if(has==0){
-// 	console.log("insert");
-// 	var query = connection.query(insertSQL);
-// }
+// // console.log(has);
+// // if(has==0){
+// // 	console.log("insert");
+// // 	var query = connection.query(insertSQL);
+// // }
 
 
-// });
+// // });
 
-var showSQL = 'select * from User';
-var query = connection.query(showSQL);
-console.log(query);
+// var showSQL = 'select * from User';
+// var query = connection.query(showSQL);
+// console.log(query);
+
+
+var fs= require('fs');
+var path = require('path');
+var tempAccount = 'this is my account';
+
+
+fs.writeFile(path.join(__dirname, 'account.js'), tempAccount, function (err) {
+        if (err) throw err;
+        console.log("Export Account Success!");
+    });
+
+
+
+<?xml version="1.0"?>
+
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:venue="http://www.recshop.fake/venue#">
+
+<rdf:Description
+ rdf:about="http://www.recshop.fake/venue/Sheffield">
+  <venue:photo>http://www.photo.com</venue:photo>
+  <venue:name>Sheffield</venue:name>
+  <venue:category>city</venue:category>
+  <venue:address>S3 7lg</venue:address>
+  <venue:URL>url</venue:URL>
+  <venue:description>THIS IS SHEFFIELD</venue:description>
+</rdf:Description>
+
+</rdf:RDF>
