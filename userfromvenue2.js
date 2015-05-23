@@ -89,7 +89,7 @@ if(inserted[num]==tweet.user.screen_name){
 }
 if(has == 0){
 
-re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
 inserted.push(tweet.user.screen_name);
 }
 //(screen_name,twit_id,location,profile,description,visit_venue,retwit_user)

@@ -32,7 +32,7 @@ if(key==''&& Location=='' ){
 
 if(key!=''){
 
-T.get('search/tweets', { q: key,geocode:Location,count: 50 },
+T.get('search/tweets', { q: key,geocode:Location,result_type:'popular',count: 50 },
 function(err, data,response, getres) {
 
 
@@ -68,7 +68,7 @@ if(inserted[num]==tweet.user.screen_name){
 }
 if(has == 0){
 
-re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
 inserted.push(tweet.user.screen_name);
 }
 var ge = / /;

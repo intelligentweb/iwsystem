@@ -107,7 +107,7 @@ T.get('search/tweets', { q: myquery },function(err, data, response) {
 
 var tweet= data.statuses[indx];
 
-re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description,'','');
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
 
 
 showName[num] = tweet.user.screen_name;

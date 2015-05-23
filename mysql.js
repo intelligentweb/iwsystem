@@ -16,7 +16,7 @@ console.log('Database has connected');
 function check_and_insert(screen_name,twit_id,location,profile,description,visit_venue,retwit_user){
 var has = 0;
 var selectSQL = 'select screen_name from User';
-var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'","'+visit_venue+'","'+retwit_user+'")';
+var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'")';
 
 connection.query(selectSQL, function (err2, rows) {
 	
@@ -42,9 +42,9 @@ if(has==0){
 
 }
 
-function add_user_inform(screen_name,twit_id,location,profile,description,visit_venue,retwit_user){
+function add_user_inform(screen_name,twit_id,location,profile,description){
 
-var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'","'+visit_venue+'","'+retwit_user+'")';
+var insertSQL = 'insert into User values("'+screen_name+'","'+twit_id+'","'+location+'","'+profile+'","'+description+'")';
 var query = connection.query(insertSQL);
 
 
