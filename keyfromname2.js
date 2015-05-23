@@ -107,8 +107,9 @@ T.get('search/tweets', { q: myquery },function(err, data, response) {
 
 var tweet= data.statuses[indx];
 
+if(indx==0){
 re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
-
+}
 
 showName[num] = tweet.user.screen_name;
 var reg = / /;
@@ -284,6 +285,16 @@ for(var i=0;i<deleteKey.length;i++){
 // console.log(personalkey[i]);
 // console.log(numberofkey[i]);
 // }
+for(var name_number=0;name_number<names.length;name_number++){
+
+	for(var keys=0;keys<personalkey[name_number].length;keys++){
+
+		re.check_and_keywords(names[name_number],personalkey[name_number][keys]);
+
+	}
+
+}
+
 
 
 var html =

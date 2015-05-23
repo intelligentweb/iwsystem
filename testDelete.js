@@ -145,25 +145,28 @@ var has = 0;
 var selectSQL = 'select screen_name from User';
 var insertSQL = 'insert into User values("'+'screen_name'+'","'+'twit_id'+'","'+'location'+'","'+'profile'+'","'+'description'+'","'+'visit_venue'+'","'+'retwit_user'+'")';
 
-connection.query(selectSQL, function (err2, rows) {
+// connection.query(selectSQL, function (err2, rows) {
 	
 
-    if (err2) console.log(err2);
-    console.log("SELECT ==> ");
-    for (var i in rows) {
-        console.log(rows[i].screen_name);
+//     if (err2) console.log(err2);
+//     console.log("SELECT ==> ");
+//     for (var i in rows) {
+//         console.log(rows[i].screen_name);
 
-	if(rows[i].screen_name == username){
-		has = 1;
-	}
-    }
+// 	if(rows[i].screen_name == username){
+// 		has = 1;
+// 	}
+//     }
 
-console.log(has);
-if(has==0){
-	console.log("insert");
-	var query = connection.query(insertSQL);
-}
+// console.log(has);
+// if(has==0){
+// 	console.log("insert");
+// 	var query = connection.query(insertSQL);
+// }
 
 
-});
+// });
 
+var showSQL = 'select * from User';
+var query = connection.query(showSQL);
+console.log(query);

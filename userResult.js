@@ -1,3 +1,5 @@
+var re=require('./mysql.js');
+
 function show_result(screen_name,res){
 var Twit = require('twit')
 var T = new Twit({
@@ -97,12 +99,31 @@ function getres(res){
 
 var tweets = new Array();
 var images = new Array();
+var inserted = new Array();
 
 T.get('statuses/retweets/:id', { id : id },function(err, data, response) {
 
 
 for(var k =0; k<data.length;k++){
-      console.log(data[k]);
+  var has = 0;
+
+
+
+for (var num in inserted) {
+    console.log("insert");
+if(inserted[num]==data[k].user.name){
+  has = 1;
+}
+}
+if(has == 0){
+
+re.check_and_retweeter(data[k].retweeted_status.user.screen_name,data[k].user.name,data[k].user.profile_image_url);
+inserted.push(data[k].user.name);
+}
+
+
+
+      // console.log(data[k].retweeted_status.user.screen_name);
       tweets[k] = data[k].user.name;
       images[k] = data[k].user.profile_image_url;
       // console.log("peopleretweet:"+"  "+"k="+k+"  "+tweets[k]);

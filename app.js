@@ -18,6 +18,7 @@ var keyfromname = require('./keyfromname2');
 var namefromvenuennow = require('./namefromvenuenow');
 var venuefromvenue = require('./venuefromvenue');
 var tfromkey = require('./tfromkey')
+var re=require('./mysql.js');
 
 var app = express();
 var http = require('http');
@@ -153,7 +154,10 @@ console.log(POST.User);
             if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
         // if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
-            if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response)}
+            // if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
+            if(POST.fifth){re.show_user(POST.venue,response);}
+
+
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
             if(POST.latandlon){showresult.showonmap(POST.latandlon,response);}

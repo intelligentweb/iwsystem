@@ -165,6 +165,82 @@ var query = connection.query(showSQL);
 }
 
 
+function show_user(screen_name,res){
+var has = 0;
+var selectSQL = 'select * from User';
+
+var ids = new Array();
+var locations = new Array();
+var profiles = new Array();
+var descriptions = new Array();
+
+connection.query(selectSQL, function (err2, rows) {
+  
+    if (err2) console.log(err2);
+
+    for (var i in rows) {
+
+      if(rows[i].screen_name == screen_name){        
+        ids.push(rows[i].twit_id);
+        locations.push(rows[i].locaton);
+        profiles.push(rows[i].profile);
+        descriptions.push(rows[i].description);  
+      }
+    }
+
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head lang="en">'+
+    '<meta charset="UTF-8">'+
+    '<title>form</title>'+
+'</head>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
+
+'<body>'+
+'<h1>Result:'+screen_name+'</h1>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>'+
+'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+'</th>'+
+'</tr>'
+
+for(var j=0;j<ids.length;j++){
+
+html+='<tr>'
+html+='<td>'+screen_name+'</td>'
+html+='<td>'+ids[j]+'</td>'
+html+='<td>'+locations[j]+'</td>'
+html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
+html+='<td>'+descriptions[j]+'</td>'
+
+html+=
+'</tr>'
+
+}
+
+
+html+=
+'</table>'+
+'</form>'+
+'</body>'+
+
+'</html>'
+
+
+  
+  res.writeHead(200,{"Content-Type":"text/html"});
+  res.write(html);
+  res.end();
+
+});
+
+
+
+}
+
 // connection.end();
 //}
 
@@ -179,3 +255,4 @@ exports.showvenueinfor=showvenueinfor;
 exports.check_and_insert=check_and_insert;
 exports.check_and_retweeter=check_and_retweeter;
 exports.check_and_keywords=check_and_keywords;
+exports.show_user=show_user;
