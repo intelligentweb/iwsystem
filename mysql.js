@@ -37,10 +37,70 @@ if(has==0){
 	var query = connection.query(insertSQL);
 }
 
+});
+
+}
+
+
+function check_and_retweeter(screen_name,retweeter_name,retweeter_picture){
+var has = 0;
+var selectSQL = 'select * from User_Retweet';
+var insertSQL = 'insert into User_Retweet values("'+screen_name+'","'+retweeter_name+'","'+retweeter_picture+'")';
+
+connection.query(selectSQL, function (err2, rows) {
+  
+
+    if (err2) console.log(err2);
+    // console.log("SELECT ==> ");
+    for (var i in rows) {
+        // console.log(rows[i].screen_name);
+
+  if(rows[i].screen_name == screen_name&&rows[i].retweeter == retweeter_name){
+    console.log("repeated");
+    has = 1;
+    // console.log("repeat");
+  }
+    }
+
+
+if(has==0){
+  var query = connection.query(insertSQL);
+}
 
 });
 
 }
+
+
+function check_and_keywords(screen_name,keyword){
+var has = 0;
+var selectSQL = 'select * from User_Keyword';
+var insertSQL = 'insert into User_Keyword values("'+screen_name+'","'+keyword+'")';
+
+connection.query(selectSQL, function (err2, rows) {
+  
+
+    if (err2) console.log(err2);
+    // console.log("SELECT ==> ");
+    for (var i in rows) {
+        // console.log(rows[i].screen_name);
+        // console.log(rows[i]);
+  if(rows[i].screen_name == screen_name&&rows[i].keyword == keyword){
+    console.log("repeated");
+    has = 1;
+    // console.log("repeat");
+  }
+    }
+
+
+if(has==0){
+  var query = connection.query(insertSQL);
+}
+
+});
+
+}
+
 
 function add_user_inform(screen_name,twit_id,location,profile,description){
 
@@ -117,3 +177,5 @@ exports.add_user_visit_venue=add_user_visit_venue;
 exports.showuserinfor=showuserinfor;
 exports.showvenueinfor=showvenueinfor;
 exports.check_and_insert=check_and_insert;
+exports.check_and_retweeter=check_and_retweeter;
+exports.check_and_keywords=check_and_keywords;
