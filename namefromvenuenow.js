@@ -55,7 +55,7 @@ userImage[i]= tweet.user.profile_image_url;
 
 
   i++;
-  if(i== 5)
+  if(i== 10)
   {
   	stream.stop();
 

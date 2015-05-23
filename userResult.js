@@ -209,7 +209,7 @@ url: 'https://api.foursquare.com/v2/venues/search',
 method: 'GET',
 headers: headers,
 
-qs: {'ll': ll.toString(), 'intent':'checkin','oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+qs: {'ll': ll.toString(), 'radius':'500','oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 'v' :'20140806', m: 'swarm'}
 }
 
@@ -296,7 +296,7 @@ html+=
 
  
  'var infowindow = new google.maps.InfoWindow({'+
- 'content: '+'\''+'Yes'+'\''+','+
+ 'content: '+'\''+'venue on may'+'\''+','+
  'maxWidth:200 });'+
 
 
