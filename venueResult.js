@@ -198,7 +198,7 @@ html+='var marker'+j+' = new google.maps.Marker({'+
   'title:"Here!!" });'
 
 }
-html+=
+
  // 'var mapOptions = {'+
  // 'zoom: 18,'+
  // 'center: myLatlng };'+
@@ -214,7 +214,7 @@ html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
  'content: '+'\''+placesnearby[j]+'\''+','+
  'maxWidth:200 });'
 }
-html+=
+
 
 
 

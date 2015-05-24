@@ -26,7 +26,7 @@ url: 'https://api.foursquare.com/v2/venues/search',
 method: 'GET',
 headers: headers,
 
-qs: {'ll': lll.toString(), 'intent':'checkin','oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+qs: {'near': lll.toString(),'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 'v' :'20140806', m: 'swarm'}
 }
 

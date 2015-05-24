@@ -77,6 +77,7 @@ var category = new Array();
 var address = new Array();
 var URL = new Array();
 var description = new Array();
+var uinserted = new Array();
 var vinserted = new Array();
 var vaddress = new Array();
 
@@ -164,23 +165,27 @@ for(var index=0;index<places.length;index++){
     if(contact1.response.venue.bestPhoto!=null)
       photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
       category[index]=contact1.response.venue.categories[0].name;
-<<<<<<< HEAD
     if(address[index]=contact1.response.venue.location.formattedAddress!=null) address[index]=contact1.response.venue.location.formattedAddress[0]+','+contact1.response.venue.location.formattedAddress[1];
      
-=======
-      address[index]=contact1.response.venue.location.formattedAddress[0]+' '+contact1.response.venue.location.formattedAddress[1]+' '+contact1.response.venue.location.formattedAddress[2];
->>>>>>> origin/master
       URL[index]=contact1.response.venue.canonicalUrl;
     if(contact1.response.venue.tips!=null&&contact1.response.venue.tips.groups[0]!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
-
-
-
+     console.log("////////////////////////////////////////");
+     console.log(contact.response.checkin.venue.id);
+     console.log(contact1.response.venue.name);
+     console.log( photos[index]);
+     console.log(category[index]);
+     console.log(address[index]);
+     console.log(URL[index]);
+     console.log(description[index]);
+  }
+ 
+}
 
 // check same user name and venue name 
-for (var number in vinserted) {
+for (var number in uinserted) {
     
-if(vinserted[number]==contact1.response.venue.name){
+if(uinserted[number]==screen_name&&vinserted[number]==contact1.response.venue.name){
   has1 = 1;
 }
 }
@@ -188,6 +193,7 @@ if(vinserted[number]==contact1.response.venue.name){
 if(has1 == 0){
 // console.log("insert user-----venue");
 re.insert_user_venue(screen_name,contact1.response.venue.name);
+uinserted.push(screen_name);
 vinserted.push(contact1.response.venue.name);
 
 }
@@ -203,7 +209,6 @@ if(vaddress[number]==contact1.response.venue.location.formattedAddress){
 }
 if(has2 == 0){
 
-<<<<<<< HEAD
 for(var index=0;index<places.length;index++){
 // console.log("insert -----venue");
 // console.log(photos[index]);
@@ -211,34 +216,11 @@ for(var index=0;index<places.length;index++){
 // console.log(address[index]);
 
 // re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
-=======
-re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
->>>>>>> origin/master
 // console.log(photos[index]);
 vaddress.push(address[index]);
 
 }
-
-
-
-
-
-
-
-
-     console.log("////////////////////////////////////////");
-     console.log(contact.response.checkin.venue.id);
-     console.log(contact1.response.venue.name);
-     console.log( photos[index]);
-     console.log(category[index]);
-     console.log(address[index]);
-     console.log(URL[index]);
-     console.log(description[index]);
-  }
- 
 }
-
-
 
 
 //  venue_name,lat,lng,picture,category,address,url,description
