@@ -92,10 +92,24 @@ if(has == 0){
 re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
 inserted.push(tweet.user.screen_name);
 
+}
 
+for (var number in uinserted) {
+    
+if(uinserted[number]==tweet.user.screen_name&&vinserted[number]==venuename){
+  has1 = 1;
+}
 
 }
-//(screen_name,twit_id,location,profile,description,visit_venue,retwit_user)
+if(has1 == 0){
+      console.log("insert user-----venue");
+re.insert_user_venue(tweet.user.screen_name,venuename);
+uinserted.push(tweet.user.screen_name);
+vinserted.push(venuename);
+
+}
+
+
 
 }
 

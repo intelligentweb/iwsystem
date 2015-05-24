@@ -16,7 +16,7 @@ var showvenueresult = require('./venueResult');
 var venuefromuser = require('./venuefromuser2');
 var userfromvenue= require('./userfromvenue2');
 var keyfromname = require('./keyfromname2');
-var namefromvenuennow = require('./namefromvenuenow');
+var userfromvenuennow = require('./userfromvenuenow');
 var venuefromvenue = require('./venuefromvenue');
 var tfromkey = require('./tfromkey')
 var re=require('./mysql.js');
@@ -152,9 +152,9 @@ console.log(POST.User);
               venuefromuser.venue_from_user(POST.User,POST.select3,response);}
 
             
-            if(POST.fourth&&POST.select4==0){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+            if(POST.fourth&&POST.select4==0){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
-        // if(POST.fourth){namefromvenuennow.user_from_venue_now(POST.venueid,response); }
+        // if(POST.fourth){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
             // if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
             if(POST.fifth){re.show_user(POST.venue,response);}
 

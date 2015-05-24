@@ -148,7 +148,7 @@ qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 }
 
 request(options2,function (error, response, body, getres) {
-// console.log("adfasdfasdfasdf");
+ console.log("adfasdfasdfasdf");
 var jsontext1 = body;  
 
 var contact1 = JSON.parse(jsontext);
@@ -167,17 +167,10 @@ for(var index=0;index<places.length;index++){
       category[index]=contact1.response.venue.categories[0].name;
       address[index]=contact1.response.venue.location.formattedAddress;
       URL[index]=contact1.response.venue.canonicalUrl;
-    if(contact1.response.venue.tips!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
+    if(contact1.response.venue.tips!=null&&contact1.response.venue.tips.groups[0]!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
   }
 }
-
-
-
-
-
-
-
 
 count++;
 
