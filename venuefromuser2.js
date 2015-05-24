@@ -2,6 +2,8 @@
 var qs =require('querystring')
 var request = require('request');
 var re=require('./mysql.js');
+var fs= require('fs');
+var path = require('path');
 
 function venue_from_user(screen_name,days,res){
 
@@ -357,9 +359,11 @@ html+=
 '</style>'+
 
 '<body>'+
+
 '<h1>Result:</h1>'+
 '<h1>User:'+screen_name+'</h1>'+
-'<table border="1">'+
+'<form acton ="http://localhost:8200/" method="POST" >'+
+'<table vocab=http://schema.org/ border="1">'+
 
 '<tr>'+
 '<th>Places</th>'+'<th>photo</th>'+'<th>category</th>'+'<th>URL</th>'+'<th>address</th>'+'<th>description</th>'+
@@ -369,12 +373,12 @@ for(var j=0;j<places.length;j++){
 
 html+='<tr>'
 
-html+='<td>'+places[j]+'</td>'   
+html+='<td about=Item'+j+' typeof=Venueobject property=name>'+places[j]+'</td>'   
 html+='<td>'+'<img src="'+photos[j]+'" >'+'</td>'   
-html+='<td>'+category[j]+'</td>'   
+html+='<td about=Item'+j+' property=category>'+category[j]+'</td>'   
 html+='<td><a href="'+URL[j]+'">'+URL[j]+'</a></td>' 
-html+='<td>'+address[j]+'</td>'   
-html+='<td>'+description[j]+'</td>'   
+html+='<td  about=Item'+j+' property=address>'+address[j]+'</td>'   
+html+='<td  about=Item'+j+' property=description>'+description[j]+'</td>'   
 
 html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'Surroundings'+'</button></td>'
 
@@ -389,8 +393,8 @@ html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'Surroundin
 
 
 html+='<div id="map-canvas" style="background-color:#FFD700;width:50%;height:300pt;align:center;"/>'+
-'<div><p>I work at the Department of Computer Science</p></div>'+
-'<form acton ="http://localhost:8200/" method="POST" >'
+'<div><p>I work at the Department of Computer Science</p></div>'
+
 
 
 html+=
@@ -398,7 +402,7 @@ html+=
 
 //**************************
 
-'<tr>'+
+// '<tr>'+
  '<title>On Google Map</title>'+
 
  '<script type="text/javascript"'+
@@ -456,7 +460,7 @@ html+=
  '</script>'+
 
 
-'</tr>'+
+// '</tr>'+
 
 //**************************
 
@@ -466,6 +470,13 @@ html+=
 
 '</html>'
   
+
+    fs.writeFile(path.join(__dirname, 'try.html'),html, function (err) {
+        if (err) throw err;
+        console.log("Export Account Success!");
+    });
+
+
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
       res.end();
