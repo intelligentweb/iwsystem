@@ -1,30 +1,36 @@
-var Twit = require('twit')
+var qs =require('querystring')
+var request = require('request');
 
-var T = new Twit({
-    consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
-  , consumer_secret:      'smC1FdIpWDclsGhZQiaCecXoNlHcOut0CnYaLTlCVBXt8eoCZw'
-  , access_token:         '3145436519-1WrmNdLDOAsqvgRl6t811ESOGHyKdb9JnxpNh1F'
-  , access_token_secret:  'PUJoydFfkulfn3TNqjT3HAxhwFUHga5kxe8yh4aS53zfk'
+var headers = {
+'User-Agent': 'Super Agent/0.0.1',
+'Content-Type': 'application/x-www-form-urlencoded'
+}
+// Configure the request
+var options = {
+url: 'https://api.foursquare.com/v2/venues/4b058771f964a5205e9322e3',
+method: 'GET',
+headers: headers,
+qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+'v' :'20140806', m: 'foursquare'}
+}
+
+request(options,function (error, response, body, getres) {
+// console.log("adfasdfasdfasdf");
+var jsontext = body;  
+var contact = JSON.parse(jsontext);
+
+var venue_name = contact.response.venue.name;
+var venue_location = contact.response.venue.location.formattedAddress;
+var category = contact.response.venue.categories[0].name;
+var url = contact.response.venue.canonicalUrl;
+var description =contact.response.venue.tips.groups[0].items[0].text;
+var photo = contact.response.venue.bestPhoto.prefix+'120x120'+contact.response.venue.bestPhoto.suffix;
+console.log(venue_name);
+console.log(venue_location);
+console.log(category);
+console.log(url);
+console.log(description);
+console.log(photo);
+
+
 })
-
-
-var IDstr = new Array(10);
-for (var indexa=0;indexa<10;indexa++) {
-  IDstr[indexa] = null;
-}
-
-var aa = '601038645508837376';
-
-T.get('statuses/retweets/:id', { id :aa   },function(err, data, response) {
-
-//'\''+IDstr[i]+ '\''
-console.log(data.length);
-
-for(var i =0; i< data.length;i++){
-
-
-console.log(data[0].user.name);
-
-}
-
-});
