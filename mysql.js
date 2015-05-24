@@ -332,10 +332,12 @@ function show_venue(venue_name,res){
 var has = 0;
 var selectSQL = 'select * from Venue';
 
-var ids = new Array();
-var locations = new Array();
-var profiles = new Array();
-var descriptions = new Array();
+var pictures = new Array();
+var category = new Array();
+var address = new Array();
+var URL = new Array();
+var description = new Array();
+
 
 connection.query(selectSQL, function (err2, rows) {
   
@@ -343,11 +345,12 @@ connection.query(selectSQL, function (err2, rows) {
 
     for (var i in rows) {
 
-      if(rows[i].screen_name == screen_name){        
-        ids.push(rows[i].twit_id);
-        locations.push(rows[i].locaton);
-        profiles.push(rows[i].profile);
-        descriptions.push(rows[i].description);  
+      if(rows[i].venue_name == venue_name){        
+        pictures.push(rows[i].picture);
+        category.push(rows[i].category);
+        address.push(rows[i].address);
+        URL.push(rows[i].rul);
+        description.push(rows[i].description);
       }
     }
 
@@ -361,7 +364,7 @@ var html =
 '<form action="http://localhost:3000/index.html" method="POST">'+
 
 '<body>'+
-'<h1>Result:'+screen_name+'</h1>'+
+'<h1>Result:'+venue_name+'</h1>'+
 '<table border="1">'+
 
 '<tr>'+
@@ -370,14 +373,15 @@ var html =
 '</th>'+
 '</tr>'
 
-for(var j=0;j<ids.length;j++){
+for(var j=0;j<address.length;j++){
 
 html+='<tr>'
-html+='<td>'+screen_name+'</td>'
-html+='<td>'+ids[j]+'</td>'
-html+='<td>'+locations[j]+'</td>'
-html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
+html+='<td>'+venue_name+'</td>'
+html+='<td>'+address[j]+'</td>'
+html+='<td>'+category[j]+'</td>'
+html+='<td>'+'<img src="'+pictures[j]+'" >'+'</td>'
 html+='<td>'+descriptions[j]+'</td>'
+html+='<td>'+URL[j]+'</td>'
 
 html+=
 '</tr>'
