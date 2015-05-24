@@ -104,7 +104,9 @@ console.log("showmap ll is "+ll);
 
 var placesnearby =  new Array();
 var placepos = new Array();
-
+var placesurroundid = new Array();
+var URL = new Array();
+var count = 0;
 var headers = {
 'User-Agent': 'Super Agent/0.0.1',
 'Content-Type': 'application/x-www-form-urlencoded'
@@ -136,17 +138,44 @@ console.log("There are  "+contact.response.venues.length+"  places nearby");
 
  for(var i =0; i<contact.response.venues.length; i++){
 
-  console.log(contact.response.venues[i]);
+  // console.log(contact.response.venues[i]);
   placesnearby[i] =   contact.response.venues[i].name;
   var la = contact.response.venues[i].location.lat;
   var lon = contact.response.venues[i].location.lng;
   placepos[i] = la +','+lon;
-  console.log("@@@@"+ placepos[i]);
+  placesurroundid[i] = contact.response.venues[i].id;
+  // console.log(placesurroundid[i]);
+  // console.log("@@@@"+ placepos[i]);
+
+
+var options2 = {
+url: 'https://api.foursquare.com/v2/venues/'+contact.response.venues[i].id,
+method: 'GET',
+headers: headers,
+qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+'v' :'20140806', m: 'foursquare'}
 }
+
+request(options2,function (error, response, body, getres) {
+
+var jsontext1 = body;  
+var contact1 = JSON.parse(jsontext1);
+
+
+
+for(var index=0;index<placesurroundid.length;index++){
+  if(contact1.response.venue.name==placesnearby[index]){
+
+ URL[index]=contact1.response.venue.canonicalUrl;
+ // console.log(URL[index]);
+
+  }
 }
 
 
+count ++;
 
+if (count==placesurroundid.length){
 
 var html =
 '<!DOCTYPE html>'+
@@ -224,14 +253,16 @@ html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
 for(var j=0;j<10;j++){
 html+='infowindow'+j+'.open(map,marker'+j+');'
 }
+
+
+for(var j=0;j<placepos.length;j++){
+ html+= 'google.maps.event.addListener(marker'+j+','+ '\''+'click'+'\''+', function() {'+
+ ' window.open('+'"' +URL[j]+'"' +'); });'
+}
+
+
+
 html+=
-
-
-
-
-
- 'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
- 'infowindow.open(map, marker); });'+
  '}'+
  'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
  '</script>'
@@ -253,6 +284,15 @@ html+=
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
       res.end();
+}
+
+
+})
+
+
+
+}
+}
 
 
 

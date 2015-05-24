@@ -1,3 +1,114 @@
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head>'+
+'<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>'+
+'<style type="text/css">'+
+'html { height: 100% }'+
+'body { height: 100%; margin: 0; padding: 0 }'+
+'#map-canvas { height: 100% }'+
+'</style>'+
+ '<title>Where I work</title>'+
+ '<script type="text/javascript"'+
+ 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_BbMxx-ILdm9CFhwVs6_qDr3qr9_qpMQ&sensor=false">'+
+ '</script>'+
+
+ '<script type="text/javascript">'+
+
+  'function initialize() {'
+
+html+='var myLatlng = new google.maps.LatLng('+ll +');'
+
+for(var j=0;j<placepos.length;j++){
+   
+html+= 'var myLatlng'+j+' = new google.maps.LatLng('+placepos[j] +');'
+
+// html+='var marker'+j+' = new google.maps.Marker({'+
+//   'position: myLatlng'+j+','+
+//   'map: map,'+
+//   'title:"Here!!" });'
+
+}
+
+html += 'var mapOptions = {'+
+ 'zoom: 18,'+
+ 'center: myLatlng };'+
+ 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'
+
+
+html+=  'var marker = new google.maps.Marker({'+
+  'position: myLatlng,'+
+  'map: map,'+
+  'title:"Here!!" });'
+
+for(var j=0;j<placepos.length;j++){
+html+='var marker'+j+' = new google.maps.Marker({'+
+  'position: myLatlng'+j+','+
+  'map: map,'+
+  'title:"Here!!" });'
+
+}
+
+ // 'var mapOptions = {'+
+ // 'zoom: 18,'+
+ // 'center: myLatlng };'+
+ // 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
+
+ 
+ // 'var infowindow = new google.maps.InfoWindow({'+
+ // 'content: '+'\''+''+'\''+','+
+ // 'maxWidth:200 });'
+
+for(var j=0;j<placepos.length;j++){
+html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
+ 'content: '+'\''+placesnearby[j]+'\''+','+
+ 'maxWidth:200 });'
+}
+
+
+
+
+// 'infowindow.open(map,marker);'
+
+
+for(var j=0;j<placepos.length;j++){
+html+='infowindow'+j+'.open(map,marker'+j+');'
+}
+html+=
+
+
+
+
+
+ 'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
+ 'infowindow.open(map, marker); });'+
+ '}'+
+ 'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
+ '</script>'
+
+
+
+
+
+
+html+=
+'</head>'+
+'<body>'+
+'<h1>Where I work</h1>'+
+'<div id="map-canvas" style="background-color:#FFD700;width:50%;height:300pt;align:center;"/>'+
+'<div><p>I work at the Department of Computer Science</p></div>'+
+'</body>'
+      
+     console.log(html);
+      res.writeHead(200,{"Content-Type":"text/html"});
+      res.write(html);
+      res.end();
+
+
+
+
+
+
 // // var personalkey = new Array(); 
 // // var totalkey = new Array();
 // // var deleteKey = new Array();
