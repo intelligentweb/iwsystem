@@ -190,12 +190,117 @@ count++;
 if(count==shortids.length){
 // console.log(places);
 
+// var html =
+// '<!DOCTYPE html>'+
+// '<html>'+
+// '<head lang="en">'+
+//     '<meta charset="UTF-8">'+
+//     '<title>form</title>'+
+// '</head>'+
+
+// '<body>'+
+// '<form acton ="http://localhost:8200/" method="POST" >'+
+// '<h1>Result:</h1>'+
+// '<h1>User:'+screen_name+'</h1>'+
+// '<table border="1">'+
+
+// '<tr>'+
+// '<th>Places</th>'+'<th>photo</th>'+'<th>category</th>'+'<th>URL</th>'+'<th>address</th>'+'<th>description</th>'+
+// '</tr>'
+
+// for(var j=0;j<places.length;j++){
+
+// html+='<tr>'
+
+// html+='<td>'+places[j]+'</td>'   
+// html+='<td>'+'<img src="'+photos[j]+'" >'+'</td>'   
+// html+='<td>'+category[j]+'</td>'   
+// html+='<td><a href="'+URL[j]+'">'+URL[j]+'</a></td>' 
+// html+='<td>'+address[j]+'</td>'   
+// html+='<td>'+description[j]+'</td>'   
+
+// html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
+
+// html+='<td><button name="venuedetail" type="submit" value='+placeid[j]+'>'+'ShowDetail'+'</button></td>'
+
+// '</tr>'
+
+// }
+// html+=
+// '</table>'+
+// '</form>'+
+// '</body>'+
+
+// '</html>'
+
+// ?????????????????????????????????????????????????????????????????????????????????????????????????
+
 var html =
 '<!DOCTYPE html>'+
 '<html>'+
-'<head lang="en">'+
-    '<meta charset="UTF-8">'+
-    '<title>form</title>'+
+'<head>'+
+'<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>'+
+'<style type="text/css">'+
+'html { height: 100% }'+
+'body { height: 100%; margin: 0; padding: 0 }'+
+'#map-canvas { height: 100% }'+
+'</style>'+
+ '<title>Where I work</title>'+
+ '<script type="text/javascript"'+
+ 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_BbMxx-ILdm9CFhwVs6_qDr3qr9_qpMQ&sensor=false">'+
+ '</script>'+
+
+ '<script type="text/javascript">'+
+
+  'function initialize() {'
+
+html+='var myLatlng = new google.maps.LatLng('+ll[0] +');'
+
+for(var j=0;j<ll.length;j++){
+   
+html+= 'var myLatlng'+j+' = new google.maps.LatLng('+ll[j] +');'
+
+
+
+}
+
+html += 'var mapOptions = {'+
+ 'zoom: 18,'+
+ 'center: myLatlng };'+
+ 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'
+
+
+html+=  'var marker = new google.maps.Marker({'+
+  'position: myLatlng,'+
+  'map: map,'+
+  'title:"Here!!" });'
+
+for(var j=0;j<ll.length;j++){
+html+='var marker'+j+' = new google.maps.Marker({'+
+  'position: myLatlng'+j+','+
+  'map: map,'+
+  'title:"Here!!" });'
+
+}
+html+=
+
+
+ 
+ 'var infowindow = new google.maps.InfoWindow({'+
+ 'content: '+'\''+'venue on may'+'\''+','+
+ 'maxWidth:200 });'+
+
+
+
+'infowindow.open(map,marker);'+
+ 'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
+ 'infowindow.open(map, marker); });'+
+ '}'+
+ 'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
+ '</script>'
+
+
+html+=
 '</head>'+
 '<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>'+
 '<style type="text/css">'+
@@ -205,7 +310,6 @@ var html =
 '</style>'+
 
 '<body>'+
-'<form acton ="http://localhost:8200/" method="POST" >'+
 '<h1>Result:</h1>'+
 '<h1>User:'+screen_name+'</h1>'+
 '<table border="1">'+
@@ -230,6 +334,18 @@ html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'Surroundin
 '</tr>'
 
 }
+
+
+
+
+
+
+
+html+='<div id="map-canvas" style="background-color:#FFD700;width:50%;height:300pt;align:center;"/>'+
+'<div><p>I work at the Department of Computer Science</p></div>'+
+'<form acton ="http://localhost:8200/" method="POST" >'
+
+
 html+=
 '</table>'+
 
@@ -302,8 +418,6 @@ html+=
 '</body>'+
 
 '</html>'
-
-
   
       res.writeHead(200,{"Content-Type":"text/html"});
       res.write(html);
