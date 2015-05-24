@@ -176,6 +176,71 @@
 // var test = new Array();
 // test[2]='I am a ';
 // console.log(test);
+// var html =
+// '<!DOCTYPE html>'+
+// '<html>'+
+// '<head lang="en">'+
+//     '<meta charset="UTF-8">'+
+//     '<title>form</title>'+
+// '</head>'+
+// '<form action="http://localhost:3000/index.html" method="POST">'+
+
+// '<body>'+
+// '<h1>Result:'+screen_name+'</h1>'+
+// '<table border="1">'+
+
+// '<tr>'+
+// '<th>'+
+// 'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+// '</th>'+
+// '</tr>'
+
+// for(var j=0;j<ids.length;j++){
+
+// html+='<tr>'
+// html+='<td>'+screen_name+'</td>'
+// html+='<td>'+ids[j]+'</td>'
+// html+='<td>'+locations[j]+'</td>'
+// html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
+// html+='<td>'+descriptions[j]+'</td>'
+
+// html+=
+// '</tr>'
+
+// }
+
+
+// html+=
+// '</table>'+
+
+// '<table border="1">'+
+// '<h1>locations they have visited</h1>'
+
+// for(var j=0;j<visit_places.length;j++){
+// html+='<td>'+visit_places[j]+'</td>'
+// }
+
+
+// '</table>'+
+
+// '</form>'+
+// '</body>'+
+
+// '</html>'
+
+
+  
+//   res.writeHead(200,{"Content-Type":"text/html"});
+//   res.write(html);
+//   res.end();
+
+// var taghet = "Sydney Opera House,Sydney NSW 2000";
+// var trans = /,/;
+// var res = taghet.replace(trans, ' ');   
+// console.log(res);
+
+
+
 var html =
 '<!DOCTYPE html>'+
 '<html>'+
@@ -186,43 +251,42 @@ var html =
 '<form action="http://localhost:3000/index.html" method="POST">'+
 
 '<body>'+
-'<h1>Result:'+screen_name+'</h1>'+
+'<h1>Result:'+venue_name+'</h1>'+
 '<table border="1">'+
 
 '<tr>'+
 '<th>'+
-'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+'Name'+'<td>'+'address'+'</td>'+'<td>'+'category'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'description'+'</td>'+'<td>'+'URL'+'</td>'+
 '</th>'+
 '</tr>'
 
-for(var j=0;j<ids.length;j++){
+for(var j=0;j<address.length;j++){
 
 html+='<tr>'
-html+='<td>'+screen_name+'</td>'
-html+='<td>'+ids[j]+'</td>'
-html+='<td>'+locations[j]+'</td>'
-html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
-html+='<td>'+descriptions[j]+'</td>'
+html+='<td>'+venue_name+'</td>'
+html+='<td>'+address[j]+'</td>'
+html+='<td>'+category[j]+'</td>'
+html+='<td>'+'<img src="'+pictures[j]+'" >'+'</td>'
+html+='<td>'+description[j]+'</td>'
+html+='<td>'+URL[j]+'</td>'
 
 html+=
 '</tr>'
 
 }
 
+html+=
+'</table>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>'+
+'Name'+'<td>'+'profile image'+'</td>'+'<td>'+'more information'+'</td>'+
+'</th>'+
+'</tr>'
 
 html+=
 '</table>'+
-
-'<table border="1">'+
-'<h1>locations they have visited</h1>'
-
-for(var j=0;j<visit_places.length;j++){
-html+='<td>'+visit_places[j]+'</td>'
-}
-
-
-'</table>'+
-
 '</form>'+
 '</body>'+
 
