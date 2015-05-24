@@ -169,7 +169,7 @@ var html =
 
 html+='var myLatlng = new google.maps.LatLng('+ll +');'
 
-for(var j=0;j<placepos.length;j++){
+for(var j=0;j<10;j++){
    
 html+= 'var myLatlng'+j+' = new google.maps.LatLng('+placepos[j] +');'
 
@@ -191,7 +191,7 @@ html+=  'var marker = new google.maps.Marker({'+
   'map: map,'+
   'title:"Here!!" });'
 
-for(var j=0;j<placepos.length;j++){
+for(var j=0;j<10;j++){
 html+='var marker'+j+' = new google.maps.Marker({'+
   'position: myLatlng'+j+','+
   'map: map,'+
@@ -209,7 +209,7 @@ html+='var marker'+j+' = new google.maps.Marker({'+
  // 'content: '+'\''+''+'\''+','+
  // 'maxWidth:200 });'
 
-for(var j=0;j<placepos.length;j++){
+for(var j=0;j<10;j++){
 html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
  'content: '+'\''+placesnearby[j]+'\''+','+
  'maxWidth:200 });'
@@ -221,7 +221,7 @@ html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
 // 'infowindow.open(map,marker);'
 
 
-for(var j=0;j<placepos.length;j++){
+for(var j=0;j<10;j++){
 html+='infowindow'+j+'.open(map,marker'+j+');'
 }
 html+=

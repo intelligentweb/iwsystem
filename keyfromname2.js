@@ -84,24 +84,12 @@ if(time.getDate()>days){
 for(var count = 0;count<names.length;count++){
 
 
-//function sleep(milliSeconds) { 
-//     var startTime = new Date().getTime(); 
-//     while (new Date().getTime() < startTime + milliSeconds);
-//  };
-//  sleep(600); 
 
 var myquery = '\''+'from:'+names[namecount]+' '+searchDay+'\''; 
-//var myquery = '\''+' '+searchDay+'\''; 
 
-// console.log(names[namecount]);
 console.log(myquery);
-// T.get('statuses/user_timeline', { screen_name :names[namecount] }, function(err, data, response) {
 T.get('search/tweets', { q: myquery },function(err, data, response) {
 
-// console.log(names[num]);
-// console.log("now number is : "+num );
-// console.log(myquery);
-// console.log("enter");
 
  for (var indx in data.statuses) {
 
@@ -114,42 +102,39 @@ re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,twe
 showName[num] = tweet.user.screen_name;
 var reg = / /;
 var res = tweet.text.split(reg);   
-// console.log(res);
-// console.log("************************************");
+
 for (var index=0;index<res.length;index++) {
 	res[index] = res[index].toLowerCase();
 }
 
 for (var index=0;index<res.length;index++) {
-	// console.log(res[index]);
+
 
 if(res[index]!="yes"&&res[index]!="just"&&res[index]!="at"&&res[index]!="in"&&res[index]!="through"&&res[index]!="about"&&res[index]!="that"&&res[index]!="will"&&res[index]!="should"&&res[index]!="there"&&res[index]!="here"&&res[index]!="a"&&res[index]!="the"&&res[index]!="an"&&res[index]!="rt"&&res[index]!="like"&&res[index]!="and"&&res[index]!="is"&&res[index]!="has"&&res[index]!="this"){
-// console.log("enter");
+
 if(personalkey[num].length == 0){
 
-	// console.log("now is using: "+num);
+	
 	personalkey[num][0] = res[index];
 	numberofkey[num][0] = 1;
 
-	// console.log(res[0]+"put into[0][0],number : "+numberofkey[0][0]);
+	
 
 }else{
 	for (var inde = 0;inde < personalkey[num].length;inde++){
 
-		// console.log("personal[0].length: "+ personalkey[0].length);
 
 		if(res[index] == personalkey[num][inde]){
 
 			numberofkey[num][inde] += 1;
-			// console.log(personalkey[0][inde]+"plus one,now is : "+numberofkey[0][inde]);
+		
 			break;
 
 		}else {
 			if(inde == personalkey[num].length-1){
 				personalkey[num][personalkey[num].length] = res[index];
 				numberofkey[num][numberofkey[num].length] = 1;
-				// console.log(res[index]+"is into ????"+personalkey[0][personalkey[0].length]+"number is: "+numberofkey[0][personalkey[0].length]);
-				break;
+					break;
 			}
 		}
 	}
@@ -168,28 +153,23 @@ if(res[index]!="yes"&&res[index]!="just"&&res[index]!="at"&&res[index]!="in"&&re
 
 if(totalkey.length == 0){
 
-	// console.log("now is using: "+num);
+
 	totalkey[0] = res[index];
 	totalnumberofkey[0] = 1;
-
-	// console.log(res[0]+"put into[0][0],number : "+numberofkey[0][0]);
 
 }else{
 	for (var inde = 0;inde < totalkey.length;inde++){
 
-		// console.log("personal[0].length: "+ personalkey[0].length);
-
 		if(res[index] == totalkey[inde]){
 
 			totalnumberofkey[inde] += 1;
-			// console.log(personalkey[0][inde]+"plus one,now is : "+numberofkey[0][inde]);
+
 			break;
 
 		}else {
 			if(inde == totalkey.length-1){
 				totalkey[totalkey.length] = res[index];
 				totalnumberofkey[totalnumberofkey.length] = 1;
-				// console.log(res[index]+"is into ????"+personalkey[0][personalkey[0].length]+"number is: "+numberofkey[0][personalkey[0].length]);
 				break;
 			}
 		}
@@ -219,17 +199,11 @@ if(totalkey.length == 0){
             }  
         }  
     }  
-// }
-// console.log("over: "+num);
-// console.log(personalkey[num]);   
+  
 num+=1;
 
 if(num==names.length)
 {
-
-// console.log("total key");
- // console.log(totalkey);
- // console.log(totalnumberofkey);
 
 for(var i=0;i<totalkey.length;i++){  
 
@@ -271,20 +245,6 @@ for(var i=0;i<deleteKey.length;i++){
 
 }
 
-// console.log(personalkey[0]);    
-// console.log(personalkey[1]); 
-// console.log(totalkey);          
-
-
-// console.log("total key");
-// console.log(totalkey);
-// console.log(totalnumberofkey);
-
-// for(var i=0;i<names.length;i++){  
-// console.log("name:"+names[i]);
-// console.log(personalkey[i]);
-// console.log(numberofkey[i]);
-// }
 for(var name_number=0;name_number<names.length;name_number++){
 
 	for(var keys=0;keys<personalkey[name_number].length;keys++){
@@ -341,15 +301,6 @@ for(var i = 0;i<keynumber;i++){
 
 
 
-// for(var q=0;q<keynumber;q++){
-// 	html+='<td>'+numberofkey[q]+'</td>'
-
-//  }
-
-//html+='<td>'+totalnumberofkey[j]+'</td>'
-
-//html+='<td>'+arr[j]+'</td>'+'<td>'+brr[j]+'</td>'
-
 html+=
 '</tr>'
 
@@ -365,8 +316,6 @@ if(totalnumberofkey[i]){
 }
  
 '</tr>'
-
-
 html+=
 '</table>'+
 
@@ -374,14 +323,10 @@ html+=
 
 '</html>'
 
-
-  
       resp.writeHead(200,{"Content-Type":"text/html"});
       resp.write(html);
 	  resp.end();
-
 }
-
 
 })
 
@@ -389,9 +334,6 @@ namecount+=1;
 }
 
 }
-
-
-
 
 
  exports.key_from_name=key_from_name;
