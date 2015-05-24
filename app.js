@@ -165,7 +165,7 @@ if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){
   re.show_user(POST.sqlscreen_name,response);
 }
 if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){
-  console.log("jinqu venue name");
+  re.show_venue(POST.sqlvenue_name,response);
 }
 if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
   console.log("meishuru  neirong");
