@@ -172,32 +172,7 @@
 // console.log(query);
 
 
-var fs= require('fs');
-var path = require('path');
-var tempAccount = 'this is my account';
-
-
-fs.writeFile(path.join(__dirname, 'account.js'), tempAccount, function (err) {
-        if (err) throw err;
-        console.log("Export Account Success!");
-    });
-
-
-
-<?xml version="1.0"?>
-
-<rdf:RDF
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-xmlns:venue="http://www.recshop.fake/venue#">
-
-<rdf:Description
- rdf:about="http://www.recshop.fake/venue/Sheffield">
-  <venue:photo>http://www.photo.com</venue:photo>
-  <venue:name>Sheffield</venue:name>
-  <venue:category>city</venue:category>
-  <venue:address>S3 7lg</venue:address>
-  <venue:URL>url</venue:URL>
-  <venue:description>THIS IS SHEFFIELD</venue:description>
-</rdf:Description>
-
-</rdf:RDF>
+// 
+var test = new Array();
+test[2]='I am a ';
+console.log(test);

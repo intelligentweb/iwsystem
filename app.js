@@ -142,9 +142,9 @@ var server = http.createServer(function (request, response) {
             var POST = querystring.parse(body);
 
             // console.log(POST.select2a);
-            //             console.log(POST.select2b);
-            //                         console.log(POST.select3);
-            //                                     console.log(POST.select4);
+            // console.log(POST.select2b);
+            // console.log(POST.select3);
+            // console.log(POST.select4);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
             if(POST.third){ 
