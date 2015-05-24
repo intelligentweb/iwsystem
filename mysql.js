@@ -369,7 +369,7 @@ var html =
 
 '<tr>'+
 '<th>'+
-'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+'Name'+'<td>'+'address'+'</td>'+'<td>'+'category'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'description'+'</td>'+'<td>'+'URL'+'</td>'+
 '</th>'+
 '</tr>'
 
@@ -380,7 +380,7 @@ html+='<td>'+venue_name+'</td>'
 html+='<td>'+address[j]+'</td>'
 html+='<td>'+category[j]+'</td>'
 html+='<td>'+'<img src="'+pictures[j]+'" >'+'</td>'
-html+='<td>'+descriptions[j]+'</td>'
+html+='<td>'+description[j]+'</td>'
 html+='<td>'+URL[j]+'</td>'
 
 html+=
