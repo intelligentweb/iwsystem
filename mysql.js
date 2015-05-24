@@ -69,6 +69,35 @@ if(has==0){
 
 }
 
+function insert_venue_info(venue_name,lat,lng,picture,category,address,url,description){
+var has = 0;
+var selectSQL = 'select * from Venue';
+var insertSQL = 'insert into Venue("'+venue_name+'","'+lat+'","'+lng+'","'+picture+'","'+category+'","'+address+'","'+url+'","'+description+'")';
+
+connection.query(selectSQL, function (err2, rows) {
+  
+
+    if (err2) console.log(err2);
+    // console.log("SELECT ==> ");
+    for (var i in rows) {
+        // console.log(rows[i].screen_name);
+
+  if(rows[i].address == address){
+    has = 1;
+    // console.log("repeat");
+  }
+    }
+
+
+if(has==0){
+  var query = connection.query(insertSQL);
+}
+
+});
+
+}
+
+
 
 
 function check_and_retweeter(screen_name,retweeter_name,retweeter_picture){
@@ -286,3 +315,4 @@ exports.check_and_retweeter=check_and_retweeter;
 exports.check_and_keywords=check_and_keywords;
 exports.show_user=show_user;
 exports.insert_user_venue=insert_user_venue;
+exports.insert_venue_info=insert_venue_info;

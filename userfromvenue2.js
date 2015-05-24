@@ -21,7 +21,8 @@ var userDescription = new Array();
 var userImage = new Array();
 var userID = new Array();
 var inserted = new Array();
-
+var uinserted = new Array();
+var vinserted = new Array();
 //choose time*****************************************************************************************************************
 var day = days;
 var searchDay = 'since:';
@@ -69,6 +70,7 @@ T.get('search/tweets', { q:myquery },function(err, data, response) {
 for (var indx in data.statuses) {
 var tweet= data.statuses[indx];
 var has = 0;
+var has1 =0;
 // var reg = / /;
 // var res = tweet.text.split(reg);   
 //console.log(tweet.user.screen_name);

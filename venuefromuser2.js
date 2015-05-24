@@ -75,6 +75,9 @@ var category = new Array();
 var address = new Array();
 var URL = new Array();
 var description = new Array();
+var uinserted = new Array();
+var vinserted = new Array();
+var vaddress = new Array();
 
 for (var indx in data.statuses) {
 
@@ -134,7 +137,6 @@ lng.push(contact.response.checkin.venue.location.lng);
 ll.push(contact.response.checkin.venue.location.lat+','+contact.response.checkin.venue.location.lng);
 // console.log("LL is "+ll[count]);
 // console.log('i2='+i);
- // console.log(places);
 // console.log('count='+count);
 
 
@@ -151,15 +153,10 @@ request(options2,function (error, response, body, getres) {
  console.log("adfasdfasdfasdf");
 var jsontext1 = body;  
 
-var contact1 = JSON.parse(jsontext);
-console.log(contact1.response.checkin.venue.name);
-console.log(contact1.response.checkin.venue.name);
-
 var contact1 = JSON.parse(jsontext1);
 
-
-
-
+var has1 = 0;
+var has2 =0;
 for(var index=0;index<places.length;index++){
   if(contact1.response.venue.name==places[index]){
 
@@ -171,6 +168,52 @@ for(var index=0;index<places.length;index++){
 
   }
 }
+
+// check same user name and venue name 
+for (var number in uinserted) {
+    
+if(uinserted[number]==screen_name&&vinserted[number]==contact1.response.venue.name){
+  has1 = 1;
+}
+}
+
+if(has1 == 0){
+console.log("insert user-----venue");
+re.insert_user_venue(screen_name,contact1.response.venue.name);
+uinserted.push(screen_name);
+vinserted.push(contact1.response.venue.name);
+
+}
+
+
+// check same venue address 
+for (var number in vaddress) {
+    
+if(vaddress[number]==contact1.response.venue.location.formattedAddress){
+  has2 = 1;
+}
+
+}
+if(has2 == 0){
+
+for(var index=0;index<places.length;index++){
+console.log("insert -----venue");
+console.log(photos[index]);
+console.log(category[index]);
+console.log(address[index]);
+
+re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
+vaddress.push(address[index]);
+
+}
+}
+
+
+//  venue_name,lat,lng,picture,category,address,url,description
+
+
+
+
 
 count++;
 
