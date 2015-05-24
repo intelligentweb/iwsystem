@@ -2,6 +2,7 @@
  function user_from_venue_now (venuename,res){
 
 var Twit = require('twit')
+var re=require('./mysql.js');
 
 var T = new Twit({
     consumer_key:         'AUWczB88gYTtAPX49FrRBAp8G'
@@ -20,7 +21,9 @@ var userNames = new Array();
 var userLocations = new Array();
 var userDescription = new Array();
 var userImage = new Array();
-
+var inserted = new Array();
+var uinserted = new Array();
+var vinserted = new Array();
 
 
 
@@ -44,18 +47,52 @@ var stream = T.stream('statuses/filter', { locations: position,stall_warnings: t
 var i=0;
 stream.on('tweet', function (tweet) {
 	
- console.log(i);
-
+ // console.log(i);
+var has = 0;
+var has1 =0;
 useratthere[i]=tweet.user.screen_name;
 userNames[i]=tweet.user.name;
 userLocations[i]=tweet.user.location;
 userDescription[i]=tweet.user.description;
 userImage[i]= tweet.user.profile_image_url;
 
+for (var num in inserted) {
+    console.log("insert");
+if(inserted[num]==tweet.user.screen_name){
+  has = 1;
+}
+}
+if(has == 0){
+re.check_and_insert(tweet.user.screen_name,tweet.user.id,tweet.user.location,tweet.user.profile_image_url,tweet.user.description);
+inserted.push(tweet.user.screen_name);
+
+}
+ // console.log("aaaaaa");
+for (var num=0;num<uinserted.length;num++) {
+    console.log("insert");
+
+    for (var num1=0;num1<vinserted.length;num1++) {
+    
+if(uinserted[num]==tweet.user.screen_name&&vinserted[num1]==venuename){
+  has1 = 1;
+}
+
+}
+if(has1 == 0){
+re.insert_user_venue(tweet.user.screen_name,venuename);
+uinserted.push(tweet.user.screen_name);
+vinserted.push(venuename);
+
+}
+}
+
+
+
+
 
 
   i++;
-  if(i== 10)
+  if(i== 4)
   {
   	stream.stop();
 

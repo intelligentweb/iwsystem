@@ -147,7 +147,7 @@ request(options2,function (error, response, body, getres) {
 var jsontext1 = body;  
 var contact1 = JSON.parse(jsontext);
 console.log(contact1.response.checkin.venue.name);
-
+console.log(contact1.response.checkin.venue.name);
 
 
 

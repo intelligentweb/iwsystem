@@ -41,6 +41,35 @@ if(has==0){
 
 }
 
+function insert_user_venue(screen_name,venue_name){
+var has = 0;
+var selectSQL = 'select * from User_Venue';
+var insertSQL = 'insert into User_Venue values("'+screen_name+'","'+venue_name+'")';
+
+connection.query(selectSQL, function (err2, rows) {
+  
+
+    if (err2) console.log(err2);
+    // console.log("SELECT ==> ");
+    for (var i in rows) {
+        // console.log(rows[i].screen_name);
+
+  if(rows[i].screen_name == screen_name&&rows[i].venue_name == venue_name){
+    has = 1;
+    // console.log("repeat");
+  }
+    }
+
+
+if(has==0){
+  var query = connection.query(insertSQL);
+}
+
+});
+
+}
+
+
 
 function check_and_retweeter(screen_name,retweeter_name,retweeter_picture){
 var has = 0;
