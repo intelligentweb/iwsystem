@@ -160,6 +160,7 @@ console.log(POST.User);
 if(POST.sixth){
 if(POST.sqlscreen_name!=''&&POST.sqlvenue_name!=''){
   console.log("chong fu shu ru");
+   alert("chong fu shu ru");
 }
 if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){
   re.show_user(POST.sqlscreen_name,response);
@@ -169,6 +170,7 @@ if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){
 }
 if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
   console.log("meishuru  neirong");
+   alert("meishuru  neirong");
 }
 
 
