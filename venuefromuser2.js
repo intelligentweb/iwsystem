@@ -204,7 +204,7 @@ var html =
 '<table border="1">'+
 
 '<tr>'+
-'<th>Places</th>'+
+'<th>Places</th>'+'<th>photo</th>'+'<th>category</th>'+'<th>URL</th>'+'<th>address</th>'+'<th>description</th>'+
 '</tr>'
 
 for(var j=0;j<places.length;j++){
@@ -214,7 +214,7 @@ html+='<tr>'
 html+='<td>'+places[j]+'</td>'   
 html+='<td>'+'<img src="'+photos[j]+'" >'+'</td>'   
 html+='<td>'+category[j]+'</td>'   
-html+='<td>'+URL[j]+'</td>'   
+html+='<td><a href="'+URL[j]+'">'+URL[j]+'</a></td>' 
 html+='<td>'+address[j]+'</td>'   
 html+='<td>'+description[j]+'</td>'   
 
