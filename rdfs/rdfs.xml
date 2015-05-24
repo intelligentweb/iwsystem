@@ -34,8 +34,45 @@ xml:base=  "http://www.google/maps/venue#">
 <rdfs:comment>The description of venue</rdfs:comment>
 </rdf:Property>
 
+<rdf:Property rdf:ID="whoVisited">
+ <rdfs:domain rdf:resource="#user"/>
+ <rdfs:range rdf:resource="Literal"/>
+</rdf:Property>
+
 </rdf:RDF>
 
+
+<rdf:RDF
+xmlns:rdf= "http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<rdfs:Class rdf:ID="user">
+<rdfs:comment>The class of user</rdfs:comment>
+</rdfs:Class>
+
+<rdf:Property rdf:ID="id"> 
+<rdfs:comment>The id of user</rdfs:comment>
+</rdf:Property>
+
+<rdf:Property rdf:ID="name"> 
+<rdfs:comment>The name of user</rdfs:comment>
+</rdf:Property>
+
+<rdf:Property rdf:ID="location"> 
+<rdfs:comment>The location of user lived</rdfs:comment>
+</rdf:Property>
+
+<rdf:Property rdf:ID="prfilepicture"> 
+<rdfs:comment>The profile picture of user</rdfs:comment>
+</rdf:Property>
+
+<rdf:Property rdf:ID="hasVisited">
+ <rdfs:domain rdf:resource="#venue"/>
+ <rdfs:range rdf:resource="Literal"/>
+</rdf:Property>
+
+
+</rdf:RDF>
 
 
 
