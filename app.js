@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
 
-
+var util=require('util');
+var fs= require('fs');
 var index = require('./routes/index');
 var result = require('./routes/result');
 var googlemap = require('./routes/showmap');
@@ -148,7 +149,7 @@ var server = http.createServer(function (request, response) {
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
             if(POST.third){ 
-console.log(POST.User);
+              console.log(POST.User);
               venuefromuser.venue_from_user(POST.User,POST.select3,response);}
 
             
@@ -159,8 +160,7 @@ console.log(POST.User);
            // if(POST.fifth){re.show_user(POST.venue,response);}
 if(POST.sixth){
 if(POST.sqlscreen_name!=''&&POST.sqlvenue_name!=''){
-  console.log("chong fu shu ru");
-   alert("chong fu shu ru");
+
 }
 if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){
   re.show_user(POST.sqlscreen_name,response);
@@ -169,8 +169,7 @@ if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){
   re.show_venue(POST.sqlvenue_name,response);
 }
 if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
-  console.log("meishuru  neirong");
-   alert("meishuru  neirong");
+
 }
 
 

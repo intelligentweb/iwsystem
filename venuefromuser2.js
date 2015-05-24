@@ -375,9 +375,9 @@ for(var j=0;j<places.length;j++){
 html+='<tr>'
 
 html+='<td about=Item'+j+' typeof=Venueobject property=name>'+places[j]+'</td>'   
-html+='<td>'+'<img src="'+photos[j]+'" >'+'</td>'   
+html+='<td>'+'<img about=Item'+j+' property=photo src="'+photos[j]+'" >'+'</td>'   
 html+='<td about=Item'+j+' property=category>'+category[j]+'</td>'   
-html+='<td><a href="'+URL[j]+'">'+URL[j]+'</a></td>' 
+html+='<td><a about=Item'+j+' property=URL href="'+URL[j]+'">'+URL[j]+'</a></td>' 
 html+='<td  about=Item'+j+' property=address>'+address[j]+'</td>'   
 html+='<td  about=Item'+j+' property=description>'+description[j]+'</td>'   
 
