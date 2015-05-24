@@ -13,7 +13,7 @@ var googlemap = require('./routes/showmap');
 var tfromkey= require('./tfromkey');
 var showresult = require('./userResult');
 var showvenueresult = require('./venueResult');
-var venuefromuser = require('./venuefromuser');
+var venuefromuser = require('./venuefromuser2');
 var userfromvenue= require('./userfromvenue2');
 var keyfromname = require('./keyfromname2');
 var namefromvenuennow = require('./namefromvenuenow');
@@ -142,9 +142,9 @@ var server = http.createServer(function (request, response) {
             var POST = querystring.parse(body);
 
             // console.log(POST.select2a);
-            //             console.log(POST.select2b);
-            //                         console.log(POST.select3);
-            //                                     console.log(POST.select4);
+            // console.log(POST.select2b);
+            // console.log(POST.select3);
+            // console.log(POST.select4);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
             if(POST.third){ 

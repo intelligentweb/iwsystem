@@ -70,6 +70,11 @@ var placeid = new Array();
 var lat = new Array();
 var lng = new Array();
 var ll = new Array();
+var photos = new Array();
+var category = new Array();
+var address = new Array();
+var URL = new Array();
+var description = new Array();
 
 for (var indx in data.statuses) {
 
@@ -145,8 +150,30 @@ qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 request(options2,function (error, response, body, getres) {
 // console.log("adfasdfasdfasdf");
 var jsontext1 = body;  
-var contact1 = JSON.parse(jsontext);
-console.log(contact1.response.checkin.venue.name);
+var contact1 = JSON.parse(jsontext1);
+
+
+
+
+for(var index=0;index<places.length;index++){
+  if(contact1.response.venue.name==places[index]){
+if(contact1.response.venue.bestPhoto!=null)photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
+category[index]=contact1.response.venue.categories[0].name;
+address[index]=contact1.response.venue.location.formattedAddress;
+URL[index]=contact1.response.venue.canonicalUrl;
+if(contact1.response.venue.tips!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
+
+
+
+  }
+
+
+
+}
+
+
+
+
 
 
 
@@ -185,6 +212,11 @@ for(var j=0;j<places.length;j++){
 html+='<tr>'
 
 html+='<td>'+places[j]+'</td>'   
+html+='<td>'+'<img src="'+photos[j]+'" >'+'</td>'   
+html+='<td>'+category[j]+'</td>'   
+html+='<td>'+URL[j]+'</td>'   
+html+='<td>'+address[j]+'</td>'   
+html+='<td>'+description[j]+'</td>'   
 
 html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
 
