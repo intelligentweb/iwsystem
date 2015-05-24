@@ -150,11 +150,10 @@ qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 request(options2,function (error, response, body, getres) {
 // console.log("adfasdfasdfasdf");
 var jsontext1 = body;  
-<<<<<<< HEAD
+
 var contact1 = JSON.parse(jsontext);
 console.log(contact1.response.checkin.venue.name);
-console.log(contact1.response.checkin.venue.name);
-=======
+
 var contact1 = JSON.parse(jsontext1);
 
 
@@ -180,7 +179,6 @@ if(contact1.response.venue.tips!=null)description[index]=contact1.response.venue
 
 
 
->>>>>>> origin/master
 
 
 

@@ -285,3 +285,4 @@ exports.check_and_insert=check_and_insert;
 exports.check_and_retweeter=check_and_retweeter;
 exports.check_and_keywords=check_and_keywords;
 exports.show_user=show_user;
+exports.insert_user_venue=insert_user_venue;
