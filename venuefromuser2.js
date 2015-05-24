@@ -150,11 +150,11 @@ qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 request(options2,function (error, response, body, getres) {
 // console.log("adfasdfasdfasdf");
 var jsontext1 = body;  
-<<<<<<< HEAD
+
 var contact1 = JSON.parse(jsontext);
 console.log(contact1.response.checkin.venue.name);
 console.log(contact1.response.checkin.venue.name);
-=======
+
 var contact1 = JSON.parse(jsontext1);
 
 
@@ -162,25 +162,20 @@ var contact1 = JSON.parse(jsontext1);
 
 for(var index=0;index<places.length;index++){
   if(contact1.response.venue.name==places[index]){
-if(contact1.response.venue.bestPhoto!=null)photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
-category[index]=contact1.response.venue.categories[0].name;
-address[index]=contact1.response.venue.location.formattedAddress;
-URL[index]=contact1.response.venue.canonicalUrl;
-if(contact1.response.venue.tips!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
-
+    if(contact1.response.venue.bestPhoto!=null)photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
+      category[index]=contact1.response.venue.categories[0].name;
+      address[index]=contact1.response.venue.location.formattedAddress;
+      URL[index]=contact1.response.venue.canonicalUrl;
+    if(contact1.response.venue.tips!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
   }
-
-
-
 }
 
 
 
 
 
->>>>>>> origin/master
 
 
 
@@ -202,6 +197,12 @@ var html =
     '<meta charset="UTF-8">'+
     '<title>form</title>'+
 '</head>'+
+'<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>'+
+'<style type="text/css">'+
+'html { height: 100% }'+
+'body { height: 100%; margin: 0; padding: 0 }'+
+'#map-canvas { height: 100% }'+
+'</style>'+
 
 '<body>'+
 '<form acton ="http://localhost:8200/" method="POST" >'+
@@ -224,15 +225,79 @@ html+='<td><a href="'+URL[j]+'">'+URL[j]+'</a></td>'
 html+='<td>'+address[j]+'</td>'   
 html+='<td>'+description[j]+'</td>'   
 
-html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
-
-html+='<td><button name="venuedetail" type="submit" value='+placeid[j]+'>'+'ShowDetail'+'</button></td>'
+html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'Surroundings'+'</button></td>'
 
 '</tr>'
 
 }
 html+=
 '</table>'+
+
+//**************************
+
+'<tr>'+
+ '<title>On Google Map</title>'+
+
+ '<script type="text/javascript"'+
+ 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_BbMxx-ILdm9CFhwVs6_qDr3qr9_qpMQ&sensor=false">'+
+ '</script>'+
+
+ '<script type="text/javascript">'+
+
+  'function initialize() {'
+
+//html+='var myLatlng = new google.maps.LatLng('+ll +');'
+
+for(var j=0;j<ll.length;j++){
+   
+html+= 'var myLatlng'+j+' = new google.maps.LatLng('+ll[j] +');'
+
+// html+='var marker'+j+' = new google.maps.Marker({'+
+//   'position: myLatlng'+j+','+
+//   'map: map,'+
+//   'title:"Here!!" });'
+
+}
+
+html += 'var mapOptions = {'+
+ 'zoom: 18,'+
+ 'center: myLatlng };'+
+ 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'
+
+
+html+=  'var marker = new google.maps.Marker({'+
+  'position: myLatlng,'+
+  'map: map,'+
+  'title:"Here!!" });'
+
+for(var j=0;j<ll.length;j++){
+html+='var marker'+j+' = new google.maps.Marker({'+
+  'position: myLatlng'+j+','+
+  'map: map,'+
+  'title:"Here!!" });'
+
+}
+html+=
+
+ 'var infowindow = new google.maps.InfoWindow({'+
+ 'content: '+'\''+'venue on may'+'\''+','+
+ 'maxWidth:200 });'+
+
+
+
+'infowindow.open(map,marker);'+
+ 'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
+ 'infowindow.open(map, marker); });'+
+ '}'+
+ 'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
+ '</script>'+
+
+
+'</tr>'+
+
+//**************************
+
+
 '</form>'+
 '</body>'+
 
