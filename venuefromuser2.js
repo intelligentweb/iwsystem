@@ -25,35 +25,44 @@ function getres(res){
 //choose time*****************************************************************************************************************
 var day = days;
 var searchDay = 'since:';
+var outDay = '';
 // since:2010-12-27
 var time = new Date();
 searchDay += time.getFullYear();
+outDay += time.getFullYear();
 searchDay += '-';
 if(time.getDate()>days){
     // console.log(">>>>>");
     console.log(time);
     searchDay +=time.getMonth()+1;
+    outDay +=time.getMonth()+1;
     searchDay += '-';
     searchDay += time.getDate()-days;
+    outDay += time.getDate()-days;
 }else{
         // console.log("<<<<<");
         if(time.getMonth()!=1){
             searchDay +=time.getMonth();
+            outDay +=time.getMonth();
             searchDay += '-';
             var lastMonth = time.getMonth();
 
             if(lastMonth == 1||lastMonth == 3||lastMonth == 5||lastMonth == 7||lastMonth == 8||lastMonth == 10||lastMonth == 12){
                 searchDay += (time.getDate()+31-days);
+                outDay += (time.getDate()+31-days);
             }
             if(lastMonth == 2 ){
                 searchDay += (time.getDate()+28-days);
+                  outDay += (time.getDate()+28-days);
             }
             if(lastMonth == 4||lastMonth == 6||lastMonth == 9||lastMonth == 11){
                 searchDay += (time.getDate()+30-days);
+                  outDay += (time.getDate()+30-days);
             }
 
         }else{
             searchDay = time.getFullYear()-1+"-"+12+time.getDate()+31-days;
+            outDay = time.getFullYear()-1+"-"+12+time.getDate()+31-days;
         }    
 }
 //****************************************************************************************************************************
@@ -468,13 +477,14 @@ html+=
 
 '</form>'+
 '</body>'+
-
 '</html>'
   
+  var filename = screen_name+'from'+outDay+'.html';
+  console.log(filename);
 
-    fs.writeFile(path.join(__dirname, 'try.html'),html, function (err) {
+    fs.writeFile(path.join(__dirname+'\\views\\', filename),html, function (err) {
         if (err) throw err;
-        console.log("Export Account Success!");
+        console.log("Export Success!");
     });
 
 

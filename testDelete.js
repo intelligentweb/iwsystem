@@ -241,59 +241,65 @@
 
 
 
-var html =
-'<!DOCTYPE html>'+
-'<html>'+
-'<head lang="en">'+
-    '<meta charset="UTF-8">'+
-    '<title>form</title>'+
-'</head>'+
-'<form action="http://localhost:3000/index.html" method="POST">'+
+// var html =
+// '<!DOCTYPE html>'+
+// '<html>'+
+// '<head lang="en">'+
+//     '<meta charset="UTF-8">'+
+//     '<title>form</title>'+
+// '</head>'+
+// '<form action="http://localhost:3000/index.html" method="POST">'+
 
-'<body>'+
-'<h1>Result:'+venue_name+'</h1>'+
-'<table border="1">'+
+// '<body>'+
+// '<h1>Result:'+venue_name+'</h1>'+
+// '<table border="1">'+
 
-'<tr>'+
-'<th>'+
-'Name'+'<td>'+'address'+'</td>'+'<td>'+'category'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'description'+'</td>'+'<td>'+'URL'+'</td>'+
-'</th>'+
-'</tr>'
+// '<tr>'+
+// '<th>'+
+// 'Name'+'<td>'+'address'+'</td>'+'<td>'+'category'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'description'+'</td>'+'<td>'+'URL'+'</td>'+
+// '</th>'+
+// '</tr>'
 
-for(var j=0;j<address.length;j++){
+// for(var j=0;j<address.length;j++){
 
-html+='<tr>'
-html+='<td>'+venue_name+'</td>'
-html+='<td>'+address[j]+'</td>'
-html+='<td>'+category[j]+'</td>'
-html+='<td>'+'<img src="'+pictures[j]+'" >'+'</td>'
-html+='<td>'+description[j]+'</td>'
-html+='<td>'+URL[j]+'</td>'
+// html+='<tr>'
+// html+='<td>'+venue_name+'</td>'
+// html+='<td>'+address[j]+'</td>'
+// html+='<td>'+category[j]+'</td>'
+// html+='<td>'+'<img src="'+pictures[j]+'" >'+'</td>'
+// html+='<td>'+description[j]+'</td>'
+// html+='<td>'+URL[j]+'</td>'
 
-html+=
-'</tr>'
+// html+=
+// '</tr>'
 
-}
+// }
 
-html+=
-'</table>'+
-'<table border="1">'+
+// html+=
+// '</table>'+
+// '<table border="1">'+
 
-'<tr>'+
-'<th>'+
-'Name'+'<td>'+'profile image'+'</td>'+'<td>'+'more information'+'</td>'+
-'</th>'+
-'</tr>'
+// '<tr>'+
+// '<th>'+
+// 'Name'+'<td>'+'profile image'+'</td>'+'<td>'+'more information'+'</td>'+
+// '</th>'+
+// '</tr>'
 
-html+=
-'</table>'+
-'</form>'+
-'</body>'+
+// html+=
+// '</table>'+
+// '</form>'+
+// '</body>'+
 
-'</html>'
+// '</html>'
 
 
   
-  res.writeHead(200,{"Content-Type":"text/html"});
-  res.write(html);
-  res.end();
+//   res.writeHead(200,{"Content-Type":"text/html"});
+//   res.write(html);
+//   res.end();
+
+
+var path = require('path');
+
+var ppp=__dirname+'\\views\\';
+console.log(ppp);
