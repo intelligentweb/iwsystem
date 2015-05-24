@@ -15,10 +15,10 @@ var headers = {
 }
 // Configure the request
 var options = {
-url: 'https://api.foursquare.com/v2/venues/VENUE_ID',
+url: 'https://api.foursquare.com/v2/venues/'+venue_id,
 method: 'GET',
 headers: headers,
-qs: {'VENUE_ID': '49c2eb71f964a52041561fe3' ,'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
+qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 'v' :'20140806', m: 'foursquare'}
 }
 
@@ -27,45 +27,67 @@ request(options,function (error, response, body, getres) {
 var jsontext = body;  
 var contact = JSON.parse(jsontext);
 
-// var venue_name = contact.response.venue.name;
- // var venue_location = contact.response.venue.location.formattedAddress;
+var venue_name = contact.response.venue.name;
+var venue_location = contact.response.venue.location.formattedAddress;
+var category = contact.response.venue.categories[0].name;
+var url = contact.response.venue.canonicalUrl;
+var description =contact.response.venue.tips.groups[0].items[0].text;
+
+var photo = contact.response.venue.bestPhoto.prefix+'120x120'+contact.response.venue.bestPhoto.suffix;
 // console.log("venue name:"+venue_name);
-console.log(contact);
+// console.log(venue_location);
 
 
 
-// var html =
-// '<!DOCTYPE html>'+
-// '<html>'+
-// '<head lang="en">'+
-//     '<meta charset="UTF-8">'+
-//     '<title>form</title>'+
-// '</head>'+
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head lang="en">'+
+    '<meta charset="UTF-8">'+
+    '<title>form</title>'+
+'</head>'+
 
-// '<body>'+
-// '<form acton ="http://localhost:8200/" method="POST" >'+
-// '<h1>Result:</h1>'+
-// '<h1>Venue:'+venue_name+'</h1>'+
-// '<table border="1">'+
-// venue_location+
-// '<tr>'+
-// '<th>Places</th>'+
-// '</tr>'+
+'<body>'+
+'<form acton ="http://localhost:8200/" method="POST" >'+
+'<h1>Result:</h1>'+
+'<h1>Venue:'+venue_name+'</h1>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>venue location</th>'+
+'<th>category</th>'+
+'<th>description</th>'+
+'<th>photo Count</th>'+
+'<th>url</th>'+
+'</tr>'
+
+
+
+html+='<tr>'
+
+html+='<td>'+venue_location+'</td>'+'<td>'+category+'</td>'+'<td>'+description+'</td>'+'<td>'+'<img src='+photo+' />'+'</td>'+'<td>'+url+'</td>'
+
+html+=
+'</tr>'
+
+
+html+=
 
 
 
 
-// '</table>'+
-// '</form>'+
-// '</body>'+
+'</table>'+
+'</form>'+
+'</body>'+
 
-// '</html>'
+'</html>'
 
 
   
-//       res.writeHead(200,{"Content-Type":"text/html"});
-//       res.write(html);
-//       res.end();
+      res.writeHead(200,{"Content-Type":"text/html"});
+      res.write(html);
+      res.end();
+
  })     
 }
 
