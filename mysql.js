@@ -72,8 +72,8 @@ if(has==0){
 function insert_venue_info(venue_name,lat,lng,picture,category,address,url,description){
 var has = 0;
 var selectSQL = 'select * from Venue';
-var insertSQL = 'insert into Venue("'+venue_name+'","'+lat+'","'+lng+'","'+picture+'","'+category+'","'+address+'","'+url+'","'+description+'")';
-
+var insertSQL = 'insert into Venue values("'+venue_name+'","'+lat+'","'+lng+'","'+picture+'","'+category+'","'+address+'","'+url+'","'+description+'")';
+console.log(insertSQL);
 connection.query(selectSQL, function (err2, rows) {
   
 
@@ -82,7 +82,7 @@ connection.query(selectSQL, function (err2, rows) {
     for (var i in rows) {
         // console.log(rows[i].screen_name);
 
-  if(rows[i].address == address){
+  if(rows[i].address == address&&rows[i].venue_name == venue_name){
     has = 1;
     // console.log("repeat");
   }
@@ -360,12 +360,14 @@ html+=
 function show_venue(venue_name,res){
 var has = 0;
 var selectSQL = 'select * from Venue';
+var selectSQL2 = 'select * from User_Venue';
 
 var pictures = new Array();
 var category = new Array();
 var address = new Array();
 var URL = new Array();
 var description = new Array();
+var users = new Array();
 
 
 connection.query(selectSQL, function (err2, rows) {
@@ -380,6 +382,19 @@ connection.query(selectSQL, function (err2, rows) {
         address.push(rows[i].address);
         URL.push(rows[i].rul);
         description.push(rows[i].description);
+      }
+    }
+
+
+
+connection.query(selectSQL2, function (err2, rows) {
+  
+    if (err2) console.log(err2);
+
+    for (var i in rows) {
+
+      if(rows[i].venue_name == venue_name){        
+          users.push(rows[i].screen_name);
       }
     }
 
@@ -417,6 +432,29 @@ html+=
 
 }
 
+html+=
+'</table>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>'+
+'Name'+'<td>'+'more information'+'</td>'+
+'</th>'+
+'</tr>'
+
+for(var j=0;j<users.length;j++){
+
+html+='<tr>'
+
+html+='<td>'+users[j]+'</td>'
+html+='<td><button name="user_screen" type="submit" value='+users[j]+'>'+'Click'+'</button></td>'
+
+html+=
+'</tr>'
+
+}
+
+
 
 html+=
 '</table>'+
@@ -430,6 +468,11 @@ html+=
   res.writeHead(200,{"Content-Type":"text/html"});
   res.write(html);
   res.end();
+
+
+
+
+  });
 
 });
 

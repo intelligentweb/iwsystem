@@ -173,11 +173,11 @@ if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
 
 
 }
-
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
             if(POST.venueonmap){showvenueresult.showonmap(POST.venueonmap,response);}
             if(POST.venuedetail){showvenueresult.show_result(POST.venuedetail,response);}
+            if(POST.user_screen){re.show_user(POST.user_screen,response);}
            
 
             //database.showuserinfor('ShengyanZhao');
