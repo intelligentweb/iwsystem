@@ -197,6 +197,140 @@ var query = connection.query(showSQL);
 function show_user(screen_name,res){
 var has = 0;
 var selectSQL = 'select * from User';
+var selectSQL2 = 'select * from User_Venue';
+var selectSQL3 = 'select * from User_Retweet';
+
+var ids = new Array();
+var locations = new Array();
+var profiles = new Array();
+var descriptions = new Array();
+var retweeters = new Array();
+var retweeter_pic = new Array();
+var visit_places = new Array();
+
+connection.query(selectSQL, function (err2, rows) {
+  
+    if (err2) console.log(err2);
+
+    for (var i in rows) {
+
+      if(rows[i].screen_name == screen_name){        
+        ids.push(rows[i].twit_id);
+        locations.push(rows[i].locaton);
+        profiles.push(rows[i].profile);
+        descriptions.push(rows[i].description);  
+      }
+    }
+
+connection.query(selectSQL2, function (err2, rows) {
+  
+    if (err2) console.log(err2);
+
+    for (var i in rows) {
+
+if(rows[i].screen_name == screen_name){        
+
+visit_places.push(rows[i].venue_name);
+}
+  }
+
+
+connection.query(selectSQL3, function (err2, rows) {
+  
+    if (err2) console.log(err2);
+
+    for (var i in rows) {
+
+if(rows[i].screen_name == screen_name){        
+
+retweeters.push(rows[i].retweeter);
+retweeter_pic.push(rows[i].retweeter_picture);
+}
+  }
+
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head lang="en">'+
+    '<meta charset="UTF-8">'+
+    '<title>form</title>'+
+'</head>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
+
+'<body>'+
+'<h1>Result:'+screen_name+'</h1>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>'+
+'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+'</th>'+
+'</tr>'
+
+for(var j=0;j<ids.length;j++){
+
+html+='<tr>'
+html+='<td>'+screen_name+'</td>'
+html+='<td>'+ids[j]+'</td>'
+html+='<td>'+locations[j]+'</td>'
+html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
+html+='<td>'+descriptions[j]+'</td>'
+
+html+=
+'</tr>'
+
+}
+
+
+html+=
+'</table>'+
+
+'<table border="1">'+
+'<h1>locations they have visited</h1>'
+
+for(var j=0;j<visit_places.length;j++){
+html+='<td>'+visit_places[j]+'</td>'
+}
+
+html+=
+'</table>'+
+
+'<table border="1">'+
+'<h1>people who have retweeted their messages</h1>'
+for(var j=0;j<retweeters.length;j++){
+  html+='<tr>'
+html+='<td>'+retweeters[j]+'</td>'
+html+='<td>'+'<img src="'+retweeter_pic[j]+'" >'+'</td>'
+
+html+='</tr>'
+}
+
+html+=
+'</table>'+
+
+'</form>'+
+'</body>'+
+
+'</html>'
+
+
+  
+  res.writeHead(200,{"Content-Type":"text/html"});
+  res.write(html);
+  res.end();
+
+    });
+  });
+});
+
+
+
+}
+
+
+function show_venue(venue_name,res){
+var has = 0;
+var selectSQL = 'select * from Venue';
 
 var ids = new Array();
 var locations = new Array();
@@ -267,7 +401,6 @@ html+=
 });
 
 
-
 }
 
 // connection.end();
@@ -285,4 +418,5 @@ exports.check_and_insert=check_and_insert;
 exports.check_and_retweeter=check_and_retweeter;
 exports.check_and_keywords=check_and_keywords;
 exports.show_user=show_user;
+exports.show_venue=show_venue;
 exports.insert_user_venue=insert_user_venue;
