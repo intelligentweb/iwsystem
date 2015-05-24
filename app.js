@@ -12,6 +12,7 @@ var result = require('./routes/result');
 var googlemap = require('./routes/showmap');
 var tfromkey= require('./tfromkey');
 var showresult = require('./userResult');
+var showvenueresult = require('./venueResult');
 var venuefromuser = require('./venuefromuser');
 var userfromvenue= require('./userfromvenue2');
 var keyfromname = require('./keyfromname2');
@@ -160,8 +161,8 @@ console.log(POST.User);
 
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
-            if(POST.latandlon){showresult.showonmap(POST.latandlon,response);}
-
+            if(POST.venueonmap){showvenueresult.showonmap(POST.venueonmap,response);}
+            if(POST.venuedetail){showvenueresult.show_result(POST.venuedetail,response);}
            
 
             //database.showuserinfor('ShengyanZhao');

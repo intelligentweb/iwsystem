@@ -66,6 +66,7 @@ T.get('search/tweets', { q:myquery ,count: 50 }, function(err, data, response,ge
   
 var shortids = new Array();
 var places = new Array();
+var placeid = new Array();
 var lat = new Array();
 var lng = new Array();
 var ll = new Array();
@@ -122,6 +123,7 @@ if (!error && response.statusCode == 200) {
 var jsontext = body;  
 var contact = JSON.parse(jsontext);
 places[count]=contact.response.checkin.venue.name;
+placeid[count] = contact.response.checkin.venue.id;
 lat[count] = contact.response.checkin.venue.location.lat;
 lng[count] = contact.response.checkin.venue.location.lng;
 ll[count] = lat[count]+','+lng[count];
@@ -163,7 +165,9 @@ html+='<tr>'
 
 html+='<td>'+places[j]+'</td>'   
 
-html+='<td><button name="latandlon" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
+html+='<td><button name="venueonmap" type="submit" value='+ll[j]+'>'+'ShowMap'+'</button></td>'
+
+html+='<td><button name="venuedetail" type="submit" value='+placeid[j]+'>'+'ShowDetail'+'</button></td>'
 
 '</tr>'
 
