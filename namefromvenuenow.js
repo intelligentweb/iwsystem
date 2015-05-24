@@ -57,7 +57,6 @@ userDescription[i]=tweet.user.description;
 userImage[i]= tweet.user.profile_image_url;
 
 for (var num in inserted) {
-    console.log("insert");
 if(inserted[num]==tweet.user.screen_name){
   has = 1;
 }
@@ -68,23 +67,22 @@ inserted.push(tweet.user.screen_name);
 
 }
  // console.log("aaaaaa");
-for (var num=0;num<uinserted.length;num++) {
-    console.log("insert");
 
-    for (var num1=0;num1<vinserted.length;num1++) {
+for (var number in uinserted) {
     
-if(uinserted[num]==tweet.user.screen_name&&vinserted[num1]==venuename){
+if(uinserted[number]==tweet.user.screen_name&&vinserted[number]==venuename){
   has1 = 1;
 }
 
 }
 if(has1 == 0){
+      console.log("insert user-----venue");
 re.insert_user_venue(tweet.user.screen_name,venuename);
 uinserted.push(tweet.user.screen_name);
 vinserted.push(venuename);
 
 }
-}
+
 
 
 
