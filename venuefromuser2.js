@@ -165,7 +165,8 @@ for(var index=0;index<places.length;index++){
     if(contact1.response.venue.bestPhoto!=null)
       photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
       category[index]=contact1.response.venue.categories[0].name;
-      address[index]=contact1.response.venue.location.formattedAddress[0]+','+contact1.response.venue.location.formattedAddress[1];
+    if(address[index]=contact1.response.venue.location.formattedAddress!=null) address[index]=contact1.response.venue.location.formattedAddress[0]+','+contact1.response.venue.location.formattedAddress[1];
+     
       URL[index]=contact1.response.venue.canonicalUrl;
     if(contact1.response.venue.tips!=null&&contact1.response.venue.tips.groups[0]!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
@@ -214,7 +215,7 @@ for(var index=0;index<places.length;index++){
 // console.log(category[index]);
 // console.log(address[index]);
 
-re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
+// re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
 // console.log(photos[index]);
 vaddress.push(address[index]);
 

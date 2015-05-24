@@ -205,18 +205,40 @@ html+=
  // 'var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);'+
 
  
- 'var infowindow = new google.maps.InfoWindow({'+
- 'content: '+'\''+'venue on may'+'\''+','+
- 'maxWidth:200 });'+
+ // 'var infowindow = new google.maps.InfoWindow({'+
+ // 'content: '+'\''+''+'\''+','+
+ // 'maxWidth:200 });'
+
+for(var j=0;j<placepos.length;j++){
+html+='var infowindow'+j+' = new google.maps.InfoWindow({'+
+ 'content: '+'\''+placesnearby[j]+'\''+','+
+ 'maxWidth:200 });'
+}
+html+=
 
 
 
-'infowindow.open(map,marker);'+
+// 'infowindow.open(map,marker);'
+
+
+for(var j=0;j<placepos.length;j++){
+html+='infowindow'+j+'.open(map,marker'+j+');'
+}
+html+=
+
+
+
+
+
  'google.maps.event.addListener(marker,'+ '\''+'click'+'\''+', function() {'+
  'infowindow.open(map, marker); });'+
  '}'+
  'google.maps.event.addDomListener(window,'+'\'' +'load'+'\''+', initialize);'+
  '</script>'
+
+
+
+
 
 
 html+=
