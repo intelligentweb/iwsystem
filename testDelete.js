@@ -173,6 +173,63 @@
 
 
 // 
-var test = new Array();
-test[2]='I am a ';
-console.log(test);
+// var test = new Array();
+// test[2]='I am a ';
+// console.log(test);
+var html =
+'<!DOCTYPE html>'+
+'<html>'+
+'<head lang="en">'+
+    '<meta charset="UTF-8">'+
+    '<title>form</title>'+
+'</head>'+
+'<form action="http://localhost:3000/index.html" method="POST">'+
+
+'<body>'+
+'<h1>Result:'+screen_name+'</h1>'+
+'<table border="1">'+
+
+'<tr>'+
+'<th>'+
+'Tweets'+'<td>'+'Twit id'+'</td>'+'<td>'+'location'+'</td>'+'<td>'+'picture'+'</td>'+'<td>'+'descriptions'+'</td>'+
+'</th>'+
+'</tr>'
+
+for(var j=0;j<ids.length;j++){
+
+html+='<tr>'
+html+='<td>'+screen_name+'</td>'
+html+='<td>'+ids[j]+'</td>'
+html+='<td>'+locations[j]+'</td>'
+html+='<td>'+'<img src="'+profiles[j]+'" >'+'</td>'
+html+='<td>'+descriptions[j]+'</td>'
+
+html+=
+'</tr>'
+
+}
+
+
+html+=
+'</table>'+
+
+'<table border="1">'+
+'<h1>locations they have visited</h1>'
+
+for(var j=0;j<visit_places.length;j++){
+html+='<td>'+visit_places[j]+'</td>'
+}
+
+
+'</table>'+
+
+'</form>'+
+'</body>'+
+
+'</html>'
+
+
+  
+  res.writeHead(200,{"Content-Type":"text/html"});
+  res.write(html);
+  res.end();

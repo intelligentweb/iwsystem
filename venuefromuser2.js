@@ -136,7 +136,7 @@ lat.push(contact.response.checkin.venue.location.lat);
 lng.push(contact.response.checkin.venue.location.lng);
 ll.push(contact.response.checkin.venue.location.lat+','+contact.response.checkin.venue.location.lng);
 // console.log("LL is "+ll[count]);
-// console.log('i2='+i);
+ // console.log(places);
 // console.log('count='+count);
 
 
@@ -150,7 +150,7 @@ qs: {'oauth_token': 'L0WAMM3KYG11JCFRFZL2NHAAPLZ02FVPQYSYCDLYKA0LVGGO',
 }
 
 request(options2,function (error, response, body, getres) {
- console.log("adfasdfasdfasdf");
+
 var jsontext1 = body;  
 
 var contact1 = JSON.parse(jsontext1);
@@ -159,14 +159,24 @@ var has1 = 0;
 var has2 =0;
 for(var index=0;index<places.length;index++){
   if(contact1.response.venue.name==places[index]){
-
-    if(contact1.response.venue.bestPhoto!=null)photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
+//  &&contact1.response.venue.bestPhoto!=null && contact1.response.venue.bestPhoto.prefix!=null && contact1.response.venue.bestPhoto.suffix!=null
+    if(contact1.response.venue.bestPhoto!=null)
+      photos[index]=contact1.response.venue.bestPhoto.prefix+'120x120'+contact1.response.venue.bestPhoto.suffix;
       category[index]=contact1.response.venue.categories[0].name;
-      address[index]=contact1.response.venue.location.formattedAddress;
+      address[index]=contact1.response.venue.location.formattedAddress[0]+','+contact1.response.venue.location.formattedAddress[1];
       URL[index]=contact1.response.venue.canonicalUrl;
     if(contact1.response.venue.tips!=null&&contact1.response.venue.tips.groups[0]!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
+     console.log("////////////////////////////////////////");
+     console.log(contact.response.checkin.venue.id);
+     console.log(contact1.response.venue.name);
+     console.log( photos[index]);
+     console.log(category[index]);
+     console.log(address[index]);
+     console.log(URL[index]);
+     console.log(description[index]);
   }
+ 
 }
 
 // check same user name and venue name 
@@ -178,7 +188,7 @@ if(uinserted[number]==screen_name&&vinserted[number]==contact1.response.venue.na
 }
 
 if(has1 == 0){
-console.log("insert user-----venue");
+// console.log("insert user-----venue");
 re.insert_user_venue(screen_name,contact1.response.venue.name);
 uinserted.push(screen_name);
 vinserted.push(contact1.response.venue.name);
@@ -197,12 +207,13 @@ if(vaddress[number]==contact1.response.venue.location.formattedAddress){
 if(has2 == 0){
 
 for(var index=0;index<places.length;index++){
-console.log("insert -----venue");
-console.log(photos[index]);
-console.log(category[index]);
-console.log(address[index]);
+// console.log("insert -----venue");
+// console.log(photos[index]);
+// console.log(category[index]);
+// console.log(address[index]);
 
 re.insert_venue_info(places[index],lat[index],lng[index],photos[index],category[index],address[index],URL[index],description[index]);
+// console.log(photos[index]);
 vaddress.push(address[index]);
 
 }

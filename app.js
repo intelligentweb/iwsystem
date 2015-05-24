@@ -155,9 +155,24 @@ console.log(POST.User);
             if(POST.fourth&&POST.select4==0){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
         // if(POST.fourth){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
-            // if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
-            if(POST.fifth){re.show_user(POST.venue,response);}
+             if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
+           // if(POST.fifth){re.show_user(POST.venue,response);}
+if(POST.sixth){
+if(POST.sqlscreen_name!=''&&POST.sqlvenue_name!=''){
+  console.log("chong fu shu ru");
+}
+if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){
+  re.show_user(POST.sqlscreen_name,response);
+}
+if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){
+  console.log("jinqu venue name");
+}
+if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
+  console.log("meishuru  neirong");
+}
 
+
+}
 
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
