@@ -87,46 +87,6 @@ app.listen(8200,function(){
 
 
 
-// app.post('http://localhost:8200/',function (req, res) {
-//      console.log('bbbbbbbbbb');
-//     if (req.method == 'POST') {
-
-//         var body = '';
-//         req.on('data', function (data) {
-//             body += data;
-//             if (body.length > 1e6) {
-//                 response.writeHead(413,
-//                     {'Content-Type': 'text/plain'}).end();
-//                 req.connection.destroy();
-//             }
-//         });
-//         req.on('end', function () {
-
-//             var POST = querystring.parse(body);
-//             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
-//             if(POST.second){keyfromname.key_from_name(POST.Screen_name,10,10,response);}
-//             if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
-//             if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,20,response); }
-
-           
-
-//            console.log('response end');
-
-//         });
-//     }
-
-//       var POST = querystring.parse(req.body);
-//             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
-//             if(POST.second){keyfromname.key_from_name(POST.Screen_name,10,10,response);}
-//             if(POST.third){ venuefromuser.venue_from_user(POST.User,20,response);}
-//             if(POST.fourth){userfromvenue.user_from_venue(POST.venueid,20,response); }
-// });
-
-
-
-
-
-
 var server = http.createServer(function (request, response) {
     if (request.method == 'POST') {
         var body = '';
@@ -141,58 +101,28 @@ var server = http.createServer(function (request, response) {
         request.on('end', function () {
 
             var POST = querystring.parse(body);
-
-            // console.log(POST.select2a);
-            // console.log(POST.select2b);
-            // console.log(POST.select3);
-            // console.log(POST.select4);
             if(POST.first){ tfromkey.tweet_from_key(POST.keywords,POST.LatitudeandLongitude,response);}
             if(POST.second){keyfromname.key_from_name(POST.Screen_name,POST.select2a,POST.select2b,response);}
-            if(POST.third){ 
-              console.log(POST.User);
-              venuefromuser.venue_from_user(POST.User,POST.select3,response);}
-
-            
+            if(POST.third){venuefromuser.venue_from_user(POST.User,POST.select3,response);}
             if(POST.fourth&&POST.select4==0){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
             if(POST.fourth&&POST.select4!=0){userfromvenue.user_from_venue(POST.venueid,POST.select4,response); }
-        // if(POST.fourth){userfromvenuennow.user_from_venue_now(POST.venueid,response); }
-             if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
-           // if(POST.fifth){re.show_user(POST.venue,response);}
-if(POST.sixth){
-if(POST.sqlscreen_name!=''&&POST.sqlvenue_name!=''){
+            if(POST.fifth){venuefromvenue.venue_from_venue(POST.venue,response);}
 
-}
-if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){
-  re.show_user(POST.sqlscreen_name,response);
-}
-if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){
-  re.show_venue(POST.sqlvenue_name,response);
-}
-if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){
-
-}
-
-
-}
+            if(POST.sixth){
+            if(POST.sqlscreen_name!=''&&POST.sqlvenue_name!=''){}
+            if(POST.sqlscreen_name!=''&&POST.sqlvenue_name==''){re.show_user(POST.sqlscreen_name,response);}
+            if(POST.sqlscreen_name==''&&POST.sqlvenue_name!=''){re.show_venue(POST.sqlvenue_name,response);}
+            if(POST.sqlscreen_name==''&&POST.sqlvenue_name==''){}
+            }
             if(POST.detail){showresult.show_result(POST.detail,response);}
             if(POST.redetail){showresult.show_retweet(POST.redetail,response);}
             if(POST.venueonmap){showvenueresult.showonmap(POST.venueonmap,response);}
             if(POST.venuedetail){showvenueresult.show_result(POST.venuedetail,response);}
             if(POST.user_screen){re.show_user(POST.user_screen,response);}
-           
-
-            //database.showuserinfor('ShengyanZhao');
-     console.log('response end');
-
         });
     }
     
 });
 server.listen(3000);
-
-
-
-
-
 
 module.exports = app;
