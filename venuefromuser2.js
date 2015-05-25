@@ -141,6 +141,7 @@ if (!error && response.statusCode == 200) {
 //console.log(body);
 var jsontext = body;  
 var contact = JSON.parse(jsontext);
+console.log(contact.response.checkin.venue.id);
 places.push(contact.response.checkin.venue.name);
 placeid.push(contact.response.checkin.venue.id);
 lat.push(contact.response.checkin.venue.location.lat);
@@ -179,14 +180,14 @@ for(var index=0;index<places.length;index++){
       URL[index]=contact1.response.venue.canonicalUrl;
     if(contact1.response.venue.tips!=null&&contact1.response.venue.tips.groups[0]!=null)description[index]=contact1.response.venue.tips.groups[0].items[0].text;
 
-     console.log("////////////////////////////////////////");
-     console.log(contact.response.checkin.venue.id);
-     console.log(contact1.response.venue.name);
-     console.log( photos[index]);
-     console.log(category[index]);
-     console.log(address[index]);
-     console.log(URL[index]);
-     console.log(description[index]);
+     // console.log("////////////////////////////////////////");
+     // console.log(contact.response.checkin.venue.id);
+     // console.log(contact1.response.venue.name);
+     // console.log( photos[index]);
+     // console.log(category[index]);
+     // console.log(address[index]);
+     // console.log(URL[index]);
+     // console.log(description[index]);
   }
  
 }
